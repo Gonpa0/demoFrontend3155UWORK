@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Formatoarchivo } from "./components/formatoarchivo/formatoarchivo";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [Formatoarchivo],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
