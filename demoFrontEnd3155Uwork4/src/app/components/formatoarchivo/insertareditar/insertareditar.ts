@@ -38,16 +38,18 @@ export class Insertareditar implements OnInit{
     private router:Router) {}
 
   ngOnInit(): void {
+
+    //PRIMERO DEFINIMOS EL FORMULARIO PARA REGISTRAR FORMATOARCHIVO
+        this.form=this.formBuilder.group({
+        codigo:[0], /* [''], */ //ASIGNAMOS 0 PARA QUE SE ENVIE AUTOMATICAMENTE SIN ASIGNAR AL MOMENTO DE REGISTRAR
+        formatodelarchivo:['',Validators.required],
+        extensionarchivo:['',Validators.required],
+      })
+       // VERIFICA SI ES EDICION y carga los datos
       this.route.params.subscribe((data:Params)=>{
         this.id=data['id']
         this.edicion=data['id']!=null
         this.init()
-      })
-
-      this.form=this.formBuilder.group({
-        codigo:[0], /* [''], */
-        formatodelarchivo:['',Validators.required],
-        extensionarchivo:['',Validators.required],
       })
   }
 
@@ -56,30 +58,37 @@ export class Insertareditar implements OnInit{
       this.formatoarchivo.id = this.form.value.codigo
       this.formatoarchivo.formatoArchivo = this.form.value.formatodelarchivo
       this.formatoarchivo.extension=this.form.value.extensionarchivo
-      if(this.edicion){
+
+      if(this.edicion) {
         this.faS.update(this.formatoarchivo).subscribe(data=>{
           this.faS.list().subscribe(data=>{
-            this.faS.setlist(data)
+            this.faS.setList(data)
           })
         })
-      }else{
+      }
+      else {
           this.faS.insert(this.formatoarchivo).subscribe(()=>{
             this.faS.list().subscribe(data=>{
-              this.faS.setlist(data)
+              this.faS.setList(data)
             })
           })
       }
-         this.router.navigate(['formatoarchivos'])
+        this.router.navigate(['formatoarchivos'])
     }
   }
 
    init(){
     if(this.edicion){
       this.faS.listId(this.id).subscribe(data=>{
-        this.form=new FormGroup({
+       /* this.form=new FormGroup({ // new FormGroup(...) = creas un formulario desde cero (rompe el flujo si ya existe).
           codigo:new FormControl(data.id),
           formatodelarchivo:new FormControl(data.formatoArchivo),
           extensionarchivo:new FormControl(data.extension)
+        }) */
+        this.form.patchValue({ //this.form.patchValue para evitar romper el vínculo del formulario, llenando los valores del formulario que ya existe.
+          codigo:data.id,
+          formatodelarchivo: data.formatoArchivo,
+          extensionarchivo: data.extension
         })
       })
     }

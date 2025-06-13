@@ -23,10 +23,10 @@ export class FormatoarchivoService {
   insert(fA:FormatoArchivo){
     return this.http.post(this.url,fA)
   }
-  setlist(listanueva:FormatoArchivo[]){
-    this.listaCambio.next(listanueva)
+   setList(listaNueva:FormatoArchivo[]){
+    this.listaCambio.next(listaNueva)
   }
-  getlist(){
+  getList(){
     return this.listaCambio.asObservable()
   }
 

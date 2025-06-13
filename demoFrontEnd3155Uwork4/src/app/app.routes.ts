@@ -9,10 +9,10 @@ export const routes: Routes = [
         children:[
             {
                 path:'nuevo',component:Insertareditar
+            },
+            {
+                path:'ediciones/:id',component:Insertareditar
             }
-         /*    {
-                path:'ediciones/:id',component:InsertareditarComponent
-            } */
         ]
     }
 ];
