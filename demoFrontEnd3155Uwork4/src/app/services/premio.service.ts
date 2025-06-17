@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Rol } from '../models/Rol';
+import { Premio } from '../models/Premio';
 import { Subject } from 'rxjs';
 
 const base_url = environment.base;
@@ -9,30 +9,30 @@ const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
 })
-export class RolService {
-  private url = `${base_url}/rol`;
-  private listaCambio = new Subject<Rol[]>();
+export class PremioServices {
+  private url = `${base_url}/premio`;
+  private listaCambio = new Subject<Premio[]>();
   constructor(private http: HttpClient) {}
-
   list() {
-    return this.http.get<Rol[]>(this.url);
+    return this.http.get<Premio[]>(this.url);
   }
-  insert(r:Rol) {
-    return this.http.post(this.url, r);
+  insert(p:Premio) {
+    return this.http.post(this.url, p);
   }
-  setList(listaNueva:Rol[]) {
+  setList(listaNueva:Premio[]) {
     this.listaCambio.next(listaNueva);
   }
   getList() {
     return this.listaCambio.asObservable();
   }
   listId(id:number) {
-    return this.http.get<Rol>(`${this.url}/${id}`);
+    return this.http.get<Premio>(`${this.url}/${id}`);
   }
-  update(r:Rol) {
-    return this.http.put(this.url, r);
+  update(p:Premio) {
+    return this.http.put(this.url, p);
   }
-  deleteR(id:number) {
+  deleteP(id:number) {
     return this.http.delete(`${this.url}/${id}`);
   }
 }
+

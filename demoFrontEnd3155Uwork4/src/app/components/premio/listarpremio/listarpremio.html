@@ -5,19 +5,30 @@
       <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
-      <!-- Columna id de la tabla FormatoArchivo - c1 -->
+      <!-- Columna id de la tabla Premio - c1 -->
       <ng-container matColumnDef="c1">
         <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let element">{{element.idRol}}</td>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
       </ng-container>
 
-      <!-- Columna Formato Archivo de la tabla FormatoArchivo - c2-->
+      <!-- Columna Formato Archivo de la tabla Premio - c2-->
       <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>Nombre Rol</th>
-        <td mat-cell *matCellDef="let element">{{element.nombreRol}}</td>
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td mat-cell *matCellDef="let element">{{element.categoria}}</td>
+      </ng-container>
+      <!-- Columna Formato Archivo de la tabla Premio - c3-->
+      <ng-container matColumnDef="c3">
+        <th mat-header-cell *matHeaderCellDef>Nombre de premio</th>
+        <td mat-cell *matCellDef="let element">{{element.nombrePrem}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="c3">
+      <!-- Columna Formato Archivo de la tabla Premio - c4-->
+      <ng-container matColumnDef="c4">
+        <th mat-header-cell *matHeaderCellDef>Puntos</th>
+        <td mat-cell *matCellDef="let element">{{element.puntos}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="c5">
         <th mat-header-cell *matHeaderCellDef>Actualizar</th>
         <td mat-cell *matCellDef="let element">
           <button matButton [routerLink]="['ediciones',element.id]">
@@ -26,7 +37,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="c4">
+      <ng-container matColumnDef="c6">
         <th mat-header-cell *matHeaderCellDef>Eliminar</th>
         <td mat-cell *matCellDef="let element">
           <button matButton (click)="eliminar(element.id)">
