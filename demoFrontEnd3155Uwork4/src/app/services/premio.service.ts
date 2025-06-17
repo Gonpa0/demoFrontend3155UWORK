@@ -10,7 +10,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class PremioServices {
-  private url = `${base_url}/premio`;
+  private url = `${base_url}/premios`;
   private listaCambio = new Subject<Premio[]>();
   constructor(private http: HttpClient) {}
   list() {
