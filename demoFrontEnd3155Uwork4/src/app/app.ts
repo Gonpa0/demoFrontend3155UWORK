@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Formatoarchivo } from "./components/formatoarchivo/formatoarchivo";
 import { Rol } from './components/rol/rol';
+import { Premio } from './components/premio/premio';
+
 
 @Component({
   selector: 'app-root',
-  imports: [Formatoarchivo,Rol],
+  imports: [Formatoarchivo,Rol,Premio],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -21,14 +21,14 @@ export class Listarformatoarchivo implements OnInit {
       this.faS.list().subscribe(data=>{
         this.dataSource.data = data
       })
-       this.faS.getList().subscribe(data=>{
+      this.faS.getList().subscribe(data=>{
         // Actualizamos solo los datos para no romper el enlace con la tabla HTML.
         // Así la tabla se refresca automáticamente sin recrearla.
         this.dataSource.data = data
       })
   } /*this.dataSource= new MatTableDataSource(data) <= No funciona para actualizar automaticamente cuando hago new MatTableDataSource(data)*/
 
-   eliminar(id:number){
+  eliminar(id:number){
     this.faS.deletefA(id).subscribe(data=>{
       console.log('Eliminado:', data); /* Para ver si funciona el metodo delete en consola */
       this.faS.list().subscribe(data=>{
