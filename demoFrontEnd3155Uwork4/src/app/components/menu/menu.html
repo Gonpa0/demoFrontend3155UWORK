@@ -1,12 +1,21 @@
 <mat-toolbar class="custom-toolbar">
 
-  <!-- MENÚ PÚBLICO SIEMPRE -->
-  <div>
-    <button mat-button routerLink="/home" class="btn-rojo">
-      <mat-icon>home</mat-icon>
-      Inicio
-    </button>
-  </div>
+ <!-- MENÚ PÚBLICO SIEMPRE -->
+<!-- Mostrado solo cuando NO ha iniciado sesión -->
+<div *ngIf="!isLoggedIn">
+  <button mat-button routerLink="/home" class="btn-rojo">
+    <mat-icon>home</mat-icon>
+    Inicio
+  </button>
+</div>
+
+<!-- Mostrado solo cuando SÍ ha iniciado sesión -->
+<div *ngIf="isLoggedIn">
+  <button mat-button routerLink="/inicio" class="btn-rojo">
+    <mat-icon>home</mat-icon>
+    Inicio
+  </button>
+</div>
 
   <div *ngIf="!isLoggedIn">
     <button mat-button routerLink="/nosotros" class="btn-rojo">
@@ -56,7 +65,7 @@
 
   <!-- BOTONES DE LOGIN/REGISTER SI NO ESTÁ LOGUEADO -->
   <div *ngIf="!isLoggedIn">
-    <button mat-stroked-button color="accent" (click)="login()">
+    <button mat-stroked-button color="accent" routerLink="/inicio" (click)="login()">
        <mat-icon>login</mat-icon> Iniciar Sesión</button>
     <button mat-stroked-button color="accent" routerLink="/register">
       <mat-icon>person_add</mat-icon> Registrarse</button>
@@ -64,7 +73,7 @@
 
   <!-- BOTÓN DE CERRAR SESIÓN -->
   <div *ngIf="isLoggedIn">
-    <button mat-raised-button color="warn" class="logout-button" (click)="logout()">Cerrar Sesión</button>
+    <button mat-raised-button color="warn" class="logout-button" routerLink="/home" (click)="logout()">Cerrar Sesión</button>
   </div>
 
 </mat-toolbar>
