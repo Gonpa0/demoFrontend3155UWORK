@@ -1,0 +1,57 @@
+<mat-toolbar class="custom-toolbar">
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuformatoarchivos" class="btn-rojo">
+   <mat-icon>business</mat-icon>
+   Formato de Archivos
+  </button>
+ </div>
+  <div>
+  <button mat-button [matMenuTriggerFor]="menupremio" class="btn-rojo">
+   <mat-icon>apps</mat-icon>
+   Premio
+  </button>
+ </div>
+<div>
+  <button mat-button [matMenuTriggerFor]="menuRol" class="btn-rojo">
+   <mat-icon>business</mat-icon>
+   Rol
+  </button>
+ </div>
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuArticulo" class="btn-rojo">
+   <mat-icon>business</mat-icon>
+   Articulo
+  </button>
+ </div>
+
+ <!--AQUI AGREGA ESTO PARA QUE TENGAS OTRO ESPACIO EN EL MENU
+<div>
+  <button mat-button [matMenuTriggerFor]="menuArticulo" class="btn-rojo">
+   <mat-icon>business</mat-icon>
+   Articulo
+  </button>
+ </div> -->
+
+</mat-toolbar>
+<mat-menu #menuformatoarchivos="matMenu">
+ <button mat-menu-item routerLink="/formatoarchivos">Listar</button>
+ <button mat-menu-item routerLink="/formatoarchivos/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menupremio="matMenu">
+ <button mat-menu-item routerLink="/premios">Listar</button>
+  <button mat-menu-item routerLink="/premios/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuRol="matMenu">
+ <button mat-menu-item routerLink="/roles">Listar</button>
+ <button mat-menu-item routerLink="/roles/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuArticulo="matMenu">
+ <button mat-menu-item routerLink="/articulos">Listar</button>
+ <button mat-menu-item routerLink="/areas/nuevo">Registrar</button>
+</mat-menu>
+
+<!--AQUI AGREGA ESTO PARA QUE TENGAS OTRO ESPACIO EN EL MENU
+<mat-menu #menuArticulo="matMenu">
+ <button mat-menu-item routerLink="/articulos">Listar</button>
+ <button mat-menu-item routerLink="/areas/nuevo">Registrar</button>
+</mat-menu> -->

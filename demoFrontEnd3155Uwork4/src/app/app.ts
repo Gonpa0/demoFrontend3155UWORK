@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { Formatoarchivo } from "./components/formatoarchivo/formatoarchivo";
-import { Rol } from './components/rol/rol';
-import { Premio } from './components/premio/premio';
+import { Menu } from "./components/menu/menu";
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [Formatoarchivo,Rol,Premio],
+  imports: [Menu,RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
