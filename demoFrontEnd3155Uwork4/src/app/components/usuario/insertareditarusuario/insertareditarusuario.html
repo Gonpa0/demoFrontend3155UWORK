@@ -1,0 +1,91 @@
+<div>
+    <div><h1>Registro de Usuario</h1></div>
+    <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="idUsuario" />
+        <mat-error *ngIf="form.get('idUsuario')?.hasError('required')">
+            El codigo es obligatorio para actualizar!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Nombre del usuario</mat-label>
+        <input matInput formControlName="username" />
+        <mat-error *ngIf="form.get('username')?.hasError('required')">
+            El nombre del usuario es obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Correo</mat-label>
+        <input matInput formControlName="correo" />
+        <mat-error *ngIf="form.get('correo')?.hasError('required')">
+            El correo es obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" />
+        <mat-error *ngIf="form.get('password')?.hasError('required')">
+            La contraseña es obligatoria!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Ciclo</mat-label>
+        <input matInput formControlName="ciclo" />
+        <mat-error *ngIf="form.get('ciclo')?.hasError('required')">
+            El ciclo es obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Puntos</mat-label>
+        <input matInput formControlName="puntos" />
+        <mat-error *ngIf="form.get('puntos')?.hasError('required')">
+            Los puntos son obligatorios!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Nomdre de la carrera</mat-label>
+        <input matInput formControlName="carrera" />
+        <mat-error *ngIf="form.get('carrera')?.hasError('required')">
+            El nombre de la carrera obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Universidad</mat-label>
+        <input matInput formControlName="centro_de_estudios" />
+        <mat-error *ngIf="form.get('centro_de_estudios')?.hasError('required')">
+            El nombre de la universidad es obligatoria!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Roles</mat-label>
+        <mat-select formControlName="rol">
+            @for (food of listaRoles; track food) {
+            <mat-option [value]="food.idRol">{{ food.nombreRol }}</mat-option>
+            }
+        </mat-select>
+        <mat-error *ngif="form.get('ar')?.hasError('required')">
+            El tipo es obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Estado</mat-label>
+        <input matInput formControlName="estado" />
+        <mat-error *ngIf="form.get('estado')?.hasError('required')">
+            El nombre del estado obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <button matButton="filled">Registrar</button>
+    </form>
+    </div>
+</div>
