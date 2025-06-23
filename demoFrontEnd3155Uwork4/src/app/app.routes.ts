@@ -6,13 +6,15 @@ import { Insertareditarrol } from './components/rol/insertareditarrol/insertared
 import { Premio } from './components/premio/premio';
 import { Insertareditarpremio } from './components/premio/insertareditarpremio/insertareditarpremio';
 import { Articulo } from './components/articulo/articulo';
+import { Home } from './components/home/home';
+import { Nosotros } from './components/nosotros/nosotros';
 
 
 
 
 export const routes: Routes = [
     {
-      path:'',redirectTo:'formatoarchivos',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
     },
     {
         path:'formatoarchivos',component:Formatoarchivo,
@@ -49,5 +51,11 @@ export const routes: Routes = [
     },
     {
       path:'articulos', component:Articulo,
+    },
+    {
+      path:'home', component:Home,
+    },
+    {
+      path:'nosotros', component:Nosotros,
     }
 ];

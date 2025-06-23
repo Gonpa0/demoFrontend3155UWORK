@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,10 +12,21 @@ import { RouterLink } from '@angular/router';
             MatIconModule,
             MatButtonModule,
             MatMenuModule,
-            RouterLink],
+            RouterLink,
+          CommonModule],
   templateUrl: './menu.html',
   styleUrl: './menu.css'
 })
 export class Menu {
+  // Simulación temporal  sin AuthService)
+  isLoggedIn: boolean = true;
 
+  login() {
+    this.isLoggedIn = true;
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    // redirigir a home despues
+  }
 }
