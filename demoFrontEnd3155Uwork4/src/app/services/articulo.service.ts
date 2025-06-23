@@ -16,10 +16,34 @@ export class ArticuloService {
   private listaCambio=new Subject<Articulo[]>
 
 
-  constructor(private http:HttpClient) { }
+  constructor(private h:HttpClient) { }
 
   list(){
-      return this.http.get<Articulo[]>(this.url)
+      return this.h.get<Articulo[]>(this.url)
     }
+
+  insert(articulo:Articulo){
+      return this.h.post(this.url,articulo)
+    }
+
+  getList(){
+        return this.listaCambio.asObservable()
+      }
+
+  setList(listaNueva:Articulo[]){
+        this.listaCambio.next(listaNueva)
+      }
+
+   listId(id:number){
+      return this.h.get<Articulo>(`${this.url}/${id}`)
+    }
+
+    update(articulo:Articulo){
+      return this.h.put(this.url,articulo)
+    }
+
+     deleteArticulo(id:number){
+    return this.h.delete(`${this.url}/${id}`)
+  }
 
 }

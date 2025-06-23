@@ -24,6 +24,13 @@
   </button>
  </div>
 
+ <div>
+  <button mat-button [matMenuTriggerFor]="menuComentarioArticulo" class="btn-rojo">
+   <mat-icon>business</mat-icon>
+   Comentario Articulo
+  </button>
+ </div>
+
  <!--AQUI AGREGA ESTO PARA QUE TENGAS OTRO ESPACIO EN EL MENU
 <div>
   <button mat-button [matMenuTriggerFor]="menuArticulo" class="btn-rojo">
@@ -47,7 +54,12 @@
 </mat-menu>
 <mat-menu #menuArticulo="matMenu">
  <button mat-menu-item routerLink="/articulos">Listar</button>
- <button mat-menu-item routerLink="/areas/nuevo">Registrar</button>
+ <button mat-menu-item routerLink="/articulos/nuevo">Registrar</button>
+</mat-menu>
+<mat-menu #menuComentarioArticulo="matMenu">
+ <button mat-menu-item routerLink="/comentarioarticulos">Listar</button>
+ <button mat-menu-item routerLink="/comentarioarticulos/nuevo">Registrar</button>
+  <button mat-menu-item routerLink="/comentarioarticulos/nuevo">Buscar por palabra clave</button>
 </mat-menu>
 
 <!--AQUI AGREGA ESTO PARA QUE TENGAS OTRO ESPACIO EN EL MENU
