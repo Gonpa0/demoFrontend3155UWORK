@@ -18,10 +18,10 @@ export class Listarpremio implements OnInit {
   constructor(private pS: PremioServices) {}
 
   ngOnInit(): void {
-    this.pS.list().subscribe((data) => {
+    this.pS.list().subscribe(data => {
       this.dataSource.data = data;
     });
-    this.pS.getList().subscribe((data) => {
+    this.pS.getList().subscribe(data => {
       this.dataSource.data = data;
     });
   }

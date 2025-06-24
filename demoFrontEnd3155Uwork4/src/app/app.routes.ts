@@ -8,6 +8,11 @@ import { Insertareditarpremio } from './components/premio/insertareditarpremio/i
 import { Articulo } from './components/articulo/articulo';
 import { Home } from './components/home/home';
 import { Nosotros } from './components/nosotros/nosotros';
+import { Usuario } from './components/usuario/usuario';
+import { Insertareditarusuario } from './components/usuario/insertareditarusuario/insertareditarusuario';
+
+
+
 
 
 
@@ -57,5 +62,16 @@ export const routes: Routes = [
     },
     {
       path:'nosotros', component:Nosotros,
+    },
+    {
+        path:'usuarios',component:Usuario,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarusuario
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarusuario
+            }
+        ]
     }
 ];
