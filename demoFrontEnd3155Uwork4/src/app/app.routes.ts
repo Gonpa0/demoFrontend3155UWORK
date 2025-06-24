@@ -60,17 +60,6 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'articulos', component:ArticuloComponent,
-        children:[
-          {
-            path:'nuevo', component:Insertareditararticulo
-          },
-          {
-                path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
-          }
-        ]
-    }, //eliminar antes de hacer el commit para que no de error
-    {
         path:'home', component:Home,
         },
     {
