@@ -8,6 +8,6 @@ import { Listararticulo } from "./listararticulo/listararticulo";
   templateUrl: './articulo.html',
   styleUrl: './articulo.css'
 })
-export class Articulo {
+export class ArticuloComponent {
   constructor(public route:ActivatedRoute){}
 }

@@ -117,7 +117,7 @@ export class Insertareditarusuario implements OnInit{
   init(){
     if (this.edicion) {
       this.uS.listId(this.id).subscribe(data=>{
-        this.form.patchValue({ 
+        this.form.patchValue({
           codigo: data.idUsuario,
           username: data.username,
           correo: data.correo,
@@ -132,5 +132,5 @@ export class Insertareditarusuario implements OnInit{
       })
     }
   }
-  
+
 }

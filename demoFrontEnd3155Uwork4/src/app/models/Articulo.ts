@@ -1,3 +1,5 @@
+import { Usuario } from "./Usuario"
+
 export class Articulo {
 
 
@@ -6,8 +8,7 @@ export class Articulo {
   contenido:string=""
   fecha:Date=new Date()
   autor:string=""
-
   //RELACION CON LA TABLA USUARIO O MODELO USUARIO
-  //usuario:Usuario = new Usuario()
+  usuario:Usuario = new Usuario()
 
 }
