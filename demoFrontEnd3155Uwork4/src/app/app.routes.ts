@@ -14,6 +14,8 @@ import { Usuariopremio } from './components/usuariopremio/usuariopremio';
 import { Insertareditarusuariopremio } from './components/usuariopremio/insertareditarusuariopremio/insertareditarusuariopremio';
 import { ArticuloComponent } from './components/articulo/articulo';
 import { Insertareditararticulo } from './components/articulo/insertareditararticulo/insertareditararticulo';
+import { Comentarioarticulo } from './components/comentarioarticulo/comentarioarticulo';
+import { Insertareditarcomentarioarticulo } from './components/comentarioarticulo/insertareditarcomentarioarticulo/insertareditarcomentarioarticulo';
 
 
 
@@ -99,5 +101,17 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
           }
         ]
-    }, //eliminar antes de hacer el commit para que no de error
+    },
+    {
+      path:'comentarioarticulos', component:Comentarioarticulo,
+      children:[
+        {
+          path:'nuevo', component:Insertareditarcomentarioarticulo
+        },
+        {
+          path:'ediciones/:id', component:Insertareditarcomentarioarticulo
+        }
+      ]
+
+    }
 ];
