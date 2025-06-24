@@ -23,6 +23,12 @@
       Nosotros
     </button>
   </div>
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuUsuariopremio" class="btn-rojo">
+      <mat-icon>supervisor_account</mat-icon>
+      Usuario-Premios
+    </button>
+  </div>
 
   <div>
     <button mat-button [matMenuTriggerFor]="menupremio" class="btn-rojo">
@@ -86,6 +92,10 @@
 </mat-toolbar>
 
 <!-- MENÚS -->
+<mat-menu #menuUsuariopremio="matMenu">
+  <button mat-menu-item routerLink="/usuariopremios">Listar</button>
+  <button mat-menu-item routerLink="/usuariopremios/nuevo">Registrar</button>
+</mat-menu>
 
 <mat-menu #menupremio="matMenu">
   <button mat-menu-item routerLink="/premios">Listar</button>
