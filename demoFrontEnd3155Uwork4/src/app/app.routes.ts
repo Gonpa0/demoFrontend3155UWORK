@@ -10,8 +10,6 @@ import { Nosotros } from './components/nosotros/nosotros';
 import { Usuario } from './components/usuario/usuario';
 import { Insertareditarusuario } from './components/usuario/insertareditarusuario/insertareditarusuario';
 import { Inicio } from './components/inicio/inicio';
-import { Insertareditararticulo } from './components/articulo/insertareditararticulo/insertareditararticulo';
-import { ArticuloComponent } from './components/articulo/articulo';
 
 
 
@@ -76,5 +74,4 @@ export const routes: Routes = [
             }
         ]
     }
-
 ];
