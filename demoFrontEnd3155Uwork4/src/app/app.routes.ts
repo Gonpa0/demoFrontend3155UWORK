@@ -8,7 +8,6 @@ import { Insertareditarpremio } from './components/premio/insertareditarpremio/i
 import { Articulo } from './components/articulo/articulo';
 import { Home } from './components/home/home';
 import { Nosotros } from './components/nosotros/nosotros';
-import { Inicio } from './components/inicio/inicio';
 
 
 
@@ -58,8 +57,5 @@ export const routes: Routes = [
     },
     {
       path:'nosotros', component:Nosotros,
-    },
-    {
-      path:'inicio', component:Inicio
     }
 ];
