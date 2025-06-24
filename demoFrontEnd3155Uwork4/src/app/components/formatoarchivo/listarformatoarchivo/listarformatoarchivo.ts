@@ -17,7 +17,7 @@ export class Listarformatoarchivo implements OnInit {
   dataSource:MatTableDataSource<FormatoArchivo> = new MatTableDataSource()
   constructor(private faS:FormatoarchivoService){}
 
-  ngOnInit(): void {
+  ngOnInit(): void { //ACTUALIZADO
       this.faS.list().subscribe(data=>{
         this.dataSource.data = data
       })
@@ -28,7 +28,7 @@ export class Listarformatoarchivo implements OnInit {
       })
   } /*this.dataSource= new MatTableDataSource(data) <= No funciona para actualizar automaticamente cuando hago new MatTableDataSource(data)*/
 
-  eliminar(id:number){
+  eliminar(id:number){ //ACTUALIZADO
     this.faS.deletefA(id).subscribe(data=>{
       console.log('Eliminado:', data); /* Para ver si funciona el metodo delete en consola */
       this.faS.list().subscribe(data=>{

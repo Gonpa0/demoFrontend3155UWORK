@@ -1,0 +1,98 @@
+<mat-toolbar class="custom-toolbar">
+
+  <!-- MENÚ PÚBLICO SIEMPRE -->
+  <div>
+    <button mat-button routerLink="/home" class="btn-rojo">
+      <mat-icon>home</mat-icon>
+      Inicio
+    </button>
+  </div>
+
+  <div *ngIf="!isLoggedIn">
+    <button mat-button routerLink="/nosotros" class="btn-rojo">
+      <mat-icon>groups</mat-icon>
+      Nosotros
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menupremio" class="btn-rojo">
+      <mat-icon>emoji_events</mat-icon>
+      Premios
+    </button>
+  </div>
+
+  <div>
+    <button mat-button [matMenuTriggerFor]="menuArticulo" class="btn-rojo">
+      <mat-icon>article</mat-icon>
+      Artículos
+    </button>
+  </div>
+
+  <!-- OPCIONES VISIBLES SOLO SI ESTÁ LOGUEADO -->
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuformatoarchivos" class="btn-rojo">
+      <mat-icon>description</mat-icon>
+      Formato de Archivos
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuRol" class="btn-rojo">
+      <mat-icon>admin_panel_settings</mat-icon>
+      Rol
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuComentarioArticulo" class="btn-rojo">
+      <mat-icon>comment</mat-icon>
+      Comentario Artículo
+    </button>
+  </div>
+
+  <!-- ESPACIADOR PARA ALINEAR BOTONES A LA DERECHA -->
+  <span class="spacer"></span>
+
+  <!-- BOTONES DE LOGIN/REGISTER SI NO ESTÁ LOGUEADO -->
+  <div *ngIf="!isLoggedIn">
+    <button mat-stroked-button color="accent" (click)="login()">
+       <mat-icon>login</mat-icon> Iniciar Sesión</button>
+    <button mat-stroked-button color="accent" routerLink="/register">
+      <mat-icon>person_add</mat-icon> Registrarse</button>
+  </div>
+
+  <!-- BOTÓN DE CERRAR SESIÓN -->
+  <div *ngIf="isLoggedIn">
+    <button mat-raised-button color="warn" class="logout-button" (click)="logout()">Cerrar Sesión</button>
+  </div>
+
+</mat-toolbar>
+
+<!-- MENÚS -->
+
+<mat-menu #menupremio="matMenu">
+  <button mat-menu-item routerLink="/premios">Listar</button>
+  <button mat-menu-item *ngIf="isLoggedIn" routerLink="/premios/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuArticulo="matMenu">
+  <button mat-menu-item routerLink="/articulos">Listar</button>
+  <button mat-menu-item *ngIf="isLoggedIn" routerLink="/articulos/nuevo">Registrar</button>
+  <button mat-menu-item *ngIf="isLoggedIn" routerLink="/articulos/buscar">Buscar por palabra clave</button>
+</mat-menu>
+
+<mat-menu #menuformatoarchivos="matMenu">
+  <button mat-menu-item routerLink="/formatoarchivos">Listar</button>
+  <button mat-menu-item routerLink="/formatoarchivos/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuRol="matMenu">
+  <button mat-menu-item routerLink="/roles">Listar</button>
+  <button mat-menu-item routerLink="/roles/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuComentarioArticulo="matMenu">
+  <button mat-menu-item routerLink="/comentarioarticulos">Listar</button>
+  <button mat-menu-item routerLink="/comentarioarticulos/nuevo">Registrar</button>
+</mat-menu>

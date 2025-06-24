@@ -5,6 +5,9 @@ import { Rol } from './components/rol/rol';
 import { Insertareditarrol } from './components/rol/insertareditarrol/insertareditarrol';
 import { Premio } from './components/premio/premio';
 import { Insertareditarpremio } from './components/premio/insertareditarpremio/insertareditarpremio';
+import { Articulo } from './components/articulo/articulo';
+import { Home } from './components/home/home';
+import { Nosotros } from './components/nosotros/nosotros';
 
 
 
@@ -13,6 +16,9 @@ import { Insertareditarpremio } from './components/premio/insertareditarpremio/i
 
 
 export const routes: Routes = [
+    {
+      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+    },
     {
         path:'formatoarchivos',component:Formatoarchivo,
         children:[
@@ -45,5 +51,14 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditarpremio
             }
         ]
+    },
+    {
+      path:'articulos', component:Articulo,
+    },
+    {
+      path:'home', component:Home,
+    },
+    {
+      path:'nosotros', component:Nosotros,
     }
 ];
