@@ -5,7 +5,6 @@ import { Rol } from './components/rol/rol';
 import { Insertareditarrol } from './components/rol/insertareditarrol/insertareditarrol';
 import { Premio } from './components/premio/premio';
 import { Insertareditarpremio } from './components/premio/insertareditarpremio/insertareditarpremio';
-import { Articulo } from './components/articulo/articulo';
 import { Home } from './components/home/home';
 import { Nosotros } from './components/nosotros/nosotros';
 import { Usuario } from './components/usuario/usuario';
@@ -59,9 +58,6 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditarpremio
             }
         ]
-    },
-    {
-        path:'articulos', component:Articulo,
     },
     {
         path:'home', component:Home,

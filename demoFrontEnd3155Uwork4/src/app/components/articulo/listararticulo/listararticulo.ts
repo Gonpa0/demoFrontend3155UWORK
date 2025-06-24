@@ -12,13 +12,13 @@ import { ArticuloService } from '../../../services/articulo.service';
     MatTableModule,
     MatIconModule,
     MatButtonModule,
-    //RouterLink
+    RouterLink
   ],
   templateUrl: './listararticulo.html',
   styleUrl: './listararticulo.css'
 })
 export class Listararticulo {
-   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6'];
+   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7','c8'];
   dataSource:MatTableDataSource<Articulo>=new MatTableDataSource()
 
   constructor(private articuloS:ArticuloService){
