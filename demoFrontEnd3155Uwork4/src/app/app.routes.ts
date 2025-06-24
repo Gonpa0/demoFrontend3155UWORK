@@ -10,6 +10,7 @@ import { Home } from './components/home/home';
 import { Nosotros } from './components/nosotros/nosotros';
 import { Usuario } from './components/usuario/usuario';
 import { Insertareditarusuario } from './components/usuario/insertareditarusuario/insertareditarusuario';
+import { Inicio } from './components/inicio/inicio';
 
 
 
@@ -20,6 +21,9 @@ import { Insertareditarusuario } from './components/usuario/insertareditarusuari
 export const routes: Routes = [
     {
       path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+    },
+    {
+        path:'inicio',component:Inicio
     },
     {
         path:'formatoarchivos',component:Formatoarchivo,
