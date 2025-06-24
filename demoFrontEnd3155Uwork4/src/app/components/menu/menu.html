@@ -84,7 +84,11 @@
       <mat-icon>person_add</mat-icon> Registrarse</button>
   </div>
 
-  <!-- BOTÓN DE CERRAR SESIÓN -->
+  <!-- BOToN mi cuenta -->
+   <div *ngIf="isLoggedIn">
+    <button mat-raised-button color="warn" class="logout-button" routerLink="/inicio">Mi cuenta</button>
+  </div>
+<!-- BOToN DE cerrar sesion -->
   <div *ngIf="isLoggedIn">
     <button mat-raised-button color="warn" class="logout-button" routerLink="/home" (click)="logout()">Cerrar Sesión</button>
   </div>
