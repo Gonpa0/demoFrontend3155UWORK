@@ -11,7 +11,13 @@ import { Insertareditarpremio } from './components/premio/insertareditarpremio/i
 
 
 
+
+
+
 export const routes: Routes = [
+    {
+      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+    },
     {
         path:'formatoarchivos',component:Formatoarchivo,
         children:[
@@ -45,4 +51,13 @@ export const routes: Routes = [
             }
         ]
     },
+    {
+      path:'articulos',
+    },
+    {
+      path:'home',
+    },
+    {
+      path:'nosotros',
+    }
 ];
