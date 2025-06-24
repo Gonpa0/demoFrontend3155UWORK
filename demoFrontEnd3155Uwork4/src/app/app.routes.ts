@@ -10,6 +10,8 @@ import { Nosotros } from './components/nosotros/nosotros';
 import { Usuario } from './components/usuario/usuario';
 import { Insertareditarusuario } from './components/usuario/insertareditarusuario/insertareditarusuario';
 import { Inicio } from './components/inicio/inicio';
+import { Usuariopremio } from './components/usuariopremio/usuariopremio';
+import { Insertareditarusuariopremio } from './components/usuariopremio/insertareditarusuariopremio/insertareditarusuariopremio';
 
 
 
@@ -73,5 +75,24 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditarusuario
             }
         ]
-    }
+    },
+
+
+
+
+
+
+
+
+    {
+        path:'usuariopremios',component:Usuariopremio,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarusuariopremio
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarusuariopremio
+            }
+        ]
+    },
 ];
