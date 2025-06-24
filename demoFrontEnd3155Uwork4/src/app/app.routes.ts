@@ -12,6 +12,8 @@ import { Insertareditarusuario } from './components/usuario/insertareditarusuari
 import { Inicio } from './components/inicio/inicio';
 import { Usuariopremio } from './components/usuariopremio/usuariopremio';
 import { Insertareditarusuariopremio } from './components/usuariopremio/insertareditarusuariopremio/insertareditarusuariopremio';
+import { ArticuloComponent } from './components/articulo/articulo';
+import { Insertareditararticulo } from './components/articulo/insertareditararticulo/insertareditararticulo';
 
 
 
@@ -76,14 +78,6 @@ export const routes: Routes = [
             }
         ]
     },
-
-
-
-
-
-
-
-
     {
         path:'usuariopremios',component:Usuariopremio,
         children:[
@@ -95,4 +89,15 @@ export const routes: Routes = [
             }
         ]
     },
+      {
+        path:'articulos', component:ArticuloComponent,
+        children:[
+          {
+            path:'nuevo', component:Insertareditararticulo
+          },
+          {
+                path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+          }
+        ]
+    }, //eliminar antes de hacer el commit para que no de error
 ];
