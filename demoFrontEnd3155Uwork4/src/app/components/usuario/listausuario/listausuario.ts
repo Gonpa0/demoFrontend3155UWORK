@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
-import { supportsScrollBehavior } from '@angular/cdk/platform';
+
 
 @Component({
   selector: 'app-listausuario',
@@ -15,15 +15,24 @@ import { supportsScrollBehavior } from '@angular/cdk/platform';
 })
 export class Listausuario implements OnInit{
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5', 'c6', 'c7', 'c8','c9', 'c10', 'c11', 'c12'];
+
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
+
   constructor(private uS:UsuarioService){}
-  ngOnInit(): void {  
+  
+  ngOnInit(): void {
     this.uS.list().subscribe(data=>{
-      this.dataSource.data=data
+        this.dataSource.data = data
+      })
+      this.uS.getList().subscribe(data=>{
+        this.dataSource.data = data
+      })
+    /*this.uS.list().subscribe(data=>{
+      this.dataSource = new MatTableDataSource(data)
     })
     this.uS.getList().subscribe(data=>{
-      this.dataSource.data=data
-    })
+      this.dataSource = new MatTableDataSource(data)
+    })*/
   }
   eliminar(id: number){
     this.uS.deleteU(id).subscribe(data=>{
