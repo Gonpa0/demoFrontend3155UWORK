@@ -17,8 +17,8 @@ export class UsuariopremioService {
   list() {
     return this.http.get<UsuarioPremio[]>(this.url);
   }
-  insert(u:UsuarioPremio) {
-    return this.http.post(this.url, u);
+  insert(up:UsuarioPremio) {
+    return this.http.post(this.url, up);
   }
   setList(listaNueva:UsuarioPremio[]) {
     this.listaCambio.next(listaNueva);
@@ -29,8 +29,8 @@ export class UsuariopremioService {
   listId(id:number) {
     return this.http.get<UsuarioPremio>(`${this.url}/${id}`);
   }
-  update(u:UsuarioPremio) {
-    return this.http.put(this.url, u);
+  update(up:UsuarioPremio) {
+    return this.http.put(this.url, up);
   }
   deleteUP(id:number) {
     return this.http.delete(`${this.url}/${id}`);
