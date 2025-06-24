@@ -78,17 +78,30 @@ export class Insertareditarpremio implements OnInit {
       this.router.navigate(['premios'])
     }
   }
+  /*init(){
+    if (this.edicion) {
+      this.pS.listId(this.id).subscribe(data=>{
+        this.form = new FormGroup({
+          codigo: new FormControl(data.id),
+          categoria: new FormControl(data.categoria),
+          nombrePrem: new FormControl(data.nombrePrem),
+          puntos: new FormControl(data.puntos)
+        })
+      })
+    }
+  }*/
   init(){
     if (this.edicion) {
       this.pS.listId(this.id).subscribe(data=>{
         this.form.patchValue({
-          codigo:data.id,
+          codigo: data.id,
           categoria: data.categoria,
           nombrePrem: data.nombrePrem,
-          puntos: data.puntos
+          puntos: data.puntos,
         })
       })
     }
   }
 }
+
 

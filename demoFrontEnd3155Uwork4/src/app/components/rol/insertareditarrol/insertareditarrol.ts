@@ -75,13 +75,23 @@ export class Insertareditarrol implements OnInit{
       this.router.navigate(['roles'])
     }
   }
+  /*init(){
+    if (this.edicion) {
+      this.rS.listId(this.id).subscribe(data=>{
+        this.form = new FormGroup({
+          codigo:new FormControl(data.idRol),
+          nombreRol:new FormControl(data.nombreRol)
+        }) 
+      })
+    }
+  }*/
   init(){
     if (this.edicion) {
       this.rS.listId(this.id).subscribe(data=>{
         this.form.patchValue({
-          codigo:data.idRol,
+          codigo: data.idRol,
           nombreRol: data.nombreRol
-        })
+        }) 
       })
     }
   }

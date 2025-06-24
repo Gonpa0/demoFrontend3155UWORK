@@ -1,0 +1,41 @@
+<div class="container">
+    <div style="text-align: center; margin:5%"><h1>Registro de Usuarios-Premio</h1></div>
+    <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+        
+        <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+            El codigo es obligatorio para actualizar!!
+        </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+        <mat-label>Premios</mat-label>
+        <mat-select formControlName="premio">
+            @for (food of listaPremios; track food) {
+            <mat-option [value]="food.id">{{ food.nombrePrem }}</mat-option>
+            }
+        </mat-select>
+        <mat-error *ngIf="form.get('premio')?.hasError('required')">
+            Premio es obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+        <mat-label>Usuarios</mat-label>
+        <mat-select formControlName="usuario">
+            @for (food of listaUsuarios; track food) {
+            <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+            }
+        </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')">
+            Usuario es obligatorio!!
+        </mat-error>
+        </mat-form-field>
+        <button matButton="filled">Registrar</button>
+    </form>
+    </div>
+</div>
+
