@@ -45,5 +45,4 @@ export const routes: Routes = [
             }
         ]
     },
-
 ];
