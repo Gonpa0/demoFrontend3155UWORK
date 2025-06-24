@@ -19,7 +19,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Menu {
   // Simulación temporal  sin AuthService)
-  isLoggedIn: boolean = true;
+  isLoggedIn: boolean = false;
 
   login() {
     this.isLoggedIn = true;

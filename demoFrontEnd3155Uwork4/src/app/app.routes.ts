@@ -55,13 +55,13 @@ export const routes: Routes = [
         ]
     },
     {
-      path:'articulos', component:Articulo,
+        path:'articulos', component:Articulo,
     },
     {
-      path:'home', component:Home,
-    },
+        path:'home', component:Home,
+        },
     {
-      path:'nosotros', component:Nosotros,
+        path:'nosotros', component:Nosotros,
     },
     {
         path:'usuarios',component:Usuario,
