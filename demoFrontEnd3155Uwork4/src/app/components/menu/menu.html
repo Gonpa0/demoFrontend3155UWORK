@@ -38,6 +38,13 @@
     </button>
   </div>
 
+    <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
+      <mat-icon>supervisor_account</mat-icon>
+      Usuario
+    </button>
+  </div>
+
   <!-- OPCIONES VISIBLES SOLO SI ESTÁ LOGUEADO -->
   <div *ngIf="isLoggedIn">
     <button mat-button [matMenuTriggerFor]="menuformatoarchivos" class="btn-rojo">
@@ -105,3 +112,9 @@
   <button mat-menu-item routerLink="/comentarioarticulos">Listar</button>
   <button mat-menu-item routerLink="/comentarioarticulos/nuevo">Registrar</button>
 </mat-menu>
+
+<mat-menu #menuUsuario="matMenu">
+  <button mat-menu-item routerLink="/usuarios">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
+</mat-menu>
+
