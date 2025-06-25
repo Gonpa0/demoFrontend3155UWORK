@@ -24,6 +24,7 @@ import { Valoracion } from './components/valoracion/valoracion';
 import { Mensaje } from './components/mensaje/mensaje';
 import { Notificacion } from './components/notificacion/notificacion';
 import { Insertareditarnotificacion } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion';
+import { Buscar } from './components/articulo/buscar/buscar';
 
 
 
@@ -106,7 +107,10 @@ export const routes: Routes = [
             path:'nuevo', component:Insertareditararticulo
           },
           {
-                path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+            path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+          },
+          {
+            path:'busquedas', component:Buscar
           }
         ]
     },
