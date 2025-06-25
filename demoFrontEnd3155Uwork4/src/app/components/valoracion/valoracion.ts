@@ -1,19 +1,17 @@
+import { R } from '@angular/cdk/keycodes';
 import { Component } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { Listarvaloracion } from './listarvaloracion/listarvaloracion';
 
 @Component({
   selector: 'app-valoracion',
-  imports: [],
+  imports: [RouterOutlet, Listarvaloracion],
   templateUrl: './valoracion.html',
   styleUrl: './valoracion.css'
 })
 export class Valoracion {
-  // Aquí puedes definir las propiedades y métodos necesarios para tu componente
-  // Por ejemplo, si necesitas manejar una lista de valoraciones, puedes definirla aquí
-
-  constructor() {
+  
+  constructor(public route: ActivatedRoute) {
     // Inicialización del componente
   }
-
-  // Métodos para manejar la lógica del componente
-  // Por ejemplo, cargar valoraciones, agregar nuevas, etc.
 }

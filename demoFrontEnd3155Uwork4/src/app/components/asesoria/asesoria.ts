@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { Listarasesoria } from './listarasesoria/listarasesoria';
 
 @Component({
   selector: 'app-asesoria',
-  imports: [],
+  imports: [RouterOutlet, Listarasesoria],
   templateUrl: './asesoria.html',
   styleUrl: './asesoria.css'
 })
 export class Asesoria {
-  // Aquí puedes definir las propiedades y métodos necesarios para tu componente
-  // Por ejemplo, si necesitas manejar una lista de asesorías, puedes definirla aquí
 
-  constructor() {
-    // Inicialización del componente
+  constructor(public route: ActivatedRoute) {
+    // Aquí puedes inicializar cualquier lógica necesaria para el componente
+
   }
 
-  // Métodos para manejar la lógica del componente
-  // Por ejemplo, cargar asesorías, agregar nuevas, etc.
 }

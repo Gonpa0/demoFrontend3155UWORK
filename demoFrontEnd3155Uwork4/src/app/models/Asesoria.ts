@@ -5,5 +5,5 @@ export class Asesoria {
   nombreAsesoria: string = '';
   usuarioInferior: Usuario = new Usuario();  // Para mostrar datos del asesorado
   usuarioSuperior: Usuario = new Usuario();  // Para mostrar datos del asesor
-  FechaAsesoria: string = '';
+  FechaAsesoria:  Date = new Date(); // Fecha de la asesoría
 }

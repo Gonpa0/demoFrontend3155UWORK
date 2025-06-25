@@ -31,7 +31,7 @@ export class AsesoriaService {
   }
 
   // Eliminar asesoría por ID
-  delete(id: number) {
+  deleteA(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
 

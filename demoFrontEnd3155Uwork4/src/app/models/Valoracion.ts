@@ -1,5 +1,5 @@
-import { Asesoria } from './Asesoria';
-import { Usuario } from './Usuario';
+import { Asesoria } from '../models/Asesoria';
+import { Usuario } from '../models/Usuario';
 
 export class Valoracion {
   id: number = 0;
