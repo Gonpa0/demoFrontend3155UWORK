@@ -25,6 +25,7 @@ import { Mensaje } from './components/mensaje/mensaje';
 import { Notificacion } from './components/notificacion/notificacion';
 import { Insertareditarnotificacion } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion';
 import { Buscar } from './components/articulo/buscar/buscar';
+import { Reportes } from './components/reportes/reportes';
 
 
 
@@ -169,8 +170,9 @@ export const routes: Routes = [
             path:'ediciones/:id',component:Insertareditarnotificacion
         }
       ]
+    },
+    {
+      path:'reports', component:Reportes
     }
-
-
 
 ];
