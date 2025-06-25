@@ -23,6 +23,15 @@
       Nosotros
     </button>
   </div>
+
+   <!-- OPCIONES VISIBLES SOLO SI ESTÁ LOGUEADO -->
+    <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
+      <mat-icon>supervisor_account</mat-icon>
+      Usuario
+    </button>
+  </div>
+
   <div *ngIf="isLoggedIn">
     <button mat-button [matMenuTriggerFor]="menuUsuariopremio" class="btn-rojo">
       <mat-icon>supervisor_account</mat-icon>
@@ -43,19 +52,18 @@
       Artículos
     </button>
   </div>
-    <!-- OPCIONES VISIBLES SOLO SI ESTÁ LOGUEADO -->
-    <div *ngIf="isLoggedIn">
-    <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
-      <mat-icon>supervisor_account</mat-icon>
-      Usuario
+
+   <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuComentarioArticulo" class="btn-rojo">
+      <mat-icon>comment</mat-icon>
+      Comentario Artículo
     </button>
   </div>
 
-  
-  <div *ngIf="isLoggedIn">
-    <button mat-button [matMenuTriggerFor]="menuformatoarchivos" class="btn-rojo">
-      <mat-icon>description</mat-icon>
-      Formato de Archivos
+   <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuValoracion" class="btn-rojo">
+      <mat-icon>comment</mat-icon>
+      Valoracion
     </button>
   </div>
 
@@ -65,36 +73,6 @@
       Rol
     </button>
   </div>
-
-  <div *ngIf="isLoggedIn">
-    <button mat-button [matMenuTriggerFor]="menuComentarioArticulo" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
-      Comentario Artículo
-    </button>
-  </div>
-
-  
-  <div *ngIf="isLoggedIn">
-    <button mat-button [matMenuTriggerFor]="menuAsesoria" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
-      Asesoria
-    </button>
-  </div>
-
-  <div *ngIf="isLoggedIn">
-    <button mat-button [matMenuTriggerFor]="menuMensaje" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
-      Mensaje
-    </button>
-  </div>
-
-  <div *ngIf="isLoggedIn">
-    <button mat-button [matMenuTriggerFor]="menuValoracion" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
-      Valoracion
-    </button>
-  </div>
-
   <!-- ESPACIADOR PARA ALINEAR BOTONES A LA DERECHA -->
   <span class="spacer"></span>
 
@@ -116,6 +94,40 @@
   </div>
 
 </mat-toolbar>
+
+<mat-toolbar class="custom-toolbar" *ngIf="isLoggedIn">
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuNotificacion" class="btn-rojo">
+    <mat-icon>comment</mat-icon>
+    Notificacion
+  </button>
+  </div>
+
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuAsesoria" class="btn-rojo">
+      <mat-icon>comment</mat-icon>
+      Asesoria
+    </button>
+  </div>
+
+  <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuMensaje" class="btn-rojo">
+      <mat-icon>comment</mat-icon>
+      Mensaje
+    </button>
+  </div>
+
+    <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuformatoarchivos" class="btn-rojo">
+      <mat-icon>description</mat-icon>
+      Formato de Archivos
+    </button>
+  </div>
+
+
+</mat-toolbar>
+
+
 
 <!-- MENÚS -->
 <mat-menu #menuUsuariopremio="matMenu">
@@ -169,3 +181,7 @@
   <button mat-menu-item routerLink="/valoraciones/nuevo">Registrar</button>
 </mat-menu>
 
+<mat-menu #menuNotificacion="matMenu">
+  <button mat-menu-item routerLink="/notificaciones">Listar</button>
+  <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+</mat-menu>

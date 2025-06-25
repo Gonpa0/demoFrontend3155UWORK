@@ -5,7 +5,7 @@ export class Mensaje {
     idMensaje: number = 0;
     contenido: string = '';
     fechaMensaje: Date = new Date();
-    Orden: number = 0;
+    orden: number = 0;
     usuario: Usuario = new Usuario();
     asesoria: Asesoria = new Asesoria();
 }
