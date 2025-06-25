@@ -16,6 +16,12 @@ import { ArticuloComponent } from './components/articulo/articulo';
 import { Insertareditararticulo } from './components/articulo/insertareditararticulo/insertareditararticulo';
 import { Comentarioarticulo } from './components/comentarioarticulo/comentarioarticulo';
 import { Insertareditarcomentarioarticulo } from './components/comentarioarticulo/insertareditarcomentarioarticulo/insertareditarcomentarioarticulo';
+import { Asesoria } from './components/asesoria/asesoria';
+import { Insertareditarasesoria } from './components/asesoria/insertareditarasesoria/insertareditarasesoria';
+import { Insertareditarvaloracion } from './components/valoracion/insertareditarvaloracion/insertareditarvaloracion';
+import { Insertareditarmensaje } from './components/mensaje/insertareditarmensaje/insertareditarmensaje';
+import { Valoracion } from './components/valoracion/valoracion';
+import { Mensaje } from './components/mensaje/mensaje';
 
 
 
@@ -113,5 +119,38 @@ export const routes: Routes = [
         }
       ]
 
+    },
+    {
+        path:'asesorias', component:Asesoria,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarasesoria
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarasesoria
+            }
+        ]
+    },
+    {
+        path:'valoraciones', component:Valoracion,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarvaloracion
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarvaloracion
+            }
+        ]
+    },
+    {
+        path:'mensajes', component:Mensaje,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarmensaje
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarmensaje
+            }
+        ]
     }
 ];

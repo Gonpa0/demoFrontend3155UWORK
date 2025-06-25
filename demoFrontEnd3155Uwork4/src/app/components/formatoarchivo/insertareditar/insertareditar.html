@@ -1,6 +1,6 @@
-<div>
-  <div><h1>Registro de FormatoArchivo</h1></div>
-  <div>
+<div class="contanier">
+  <div style="text-align: center;margin:5%"><h1>Registro de Formato-Archivo</h1></div>
+  <div style="text-align: center;margin:5%">
     <form [formGroup]="form" (submit)="aceptar()">
        <mat-form-field *ngIf="edicion">
         <mat-label>ID</mat-label>
@@ -25,7 +25,7 @@
           La extensión es obligatoria!!
         </mat-error>
       </mat-form-field>
-
+<br>
       <button matButton="filled">Registrar</button>
     </form>
   </div>
