@@ -22,6 +22,8 @@ import { Insertareditarvaloracion } from './components/valoracion/insertareditar
 import { Insertareditarmensaje } from './components/mensaje/insertareditarmensaje/insertareditarmensaje';
 import { Valoracion } from './components/valoracion/valoracion';
 import { Mensaje } from './components/mensaje/mensaje';
+import { Notificacion } from './components/notificacion/notificacion';
+import { Insertareditarnotificacion } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion';
 
 
 
@@ -152,5 +154,19 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditarmensaje
             }
         ]
+    },
+    {
+      path:'notificaciones', component:Notificacion,
+      children:[
+        {
+           path:'nuevo',component:Insertareditarnotificacion
+        },
+        {
+            path:'ediciones/:id',component:Insertareditarnotificacion
+        }
+      ]
     }
+
+
+
 ];
