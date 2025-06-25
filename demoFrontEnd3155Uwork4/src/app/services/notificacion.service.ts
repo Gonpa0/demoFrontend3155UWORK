@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Notificacion } from '../models/Notificacion';
 import { HttpClient } from '@angular/common/http';
+import { PromedioNotificacionesDTO } from '../models/PromedioNotificacionesDTO';
 
 
 const base_url = environment.base
@@ -46,4 +47,8 @@ export class NotificacionService {
     return this.h.delete(`${this.url}/${id}`)
   }
 
+  //PARA HACER EL REPORTE METODO
+   getPromedio():Observable<PromedioNotificacionesDTO[]>{
+    return this.h.get<PromedioNotificacionesDTO[]>(`${this.url}/promedio_notificacion`)
+   }
 }

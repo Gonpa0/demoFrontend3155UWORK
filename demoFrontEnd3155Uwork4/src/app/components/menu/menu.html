@@ -124,6 +124,14 @@
     </button>
   </div>
 
+ <span class="spacer"></span>
+
+  <div>
+  <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
+   <mat-icon>file_copy</mat-icon>
+   Reportes
+  </button>
+ </div>
 
 </mat-toolbar>
 
@@ -184,4 +192,8 @@
 <mat-menu #menuNotificacion="matMenu">
   <button mat-menu-item routerLink="/notificaciones">Listar</button>
   <button mat-menu-item routerLink="/notificaciones/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuReportes="matMenu">
+ <button mat-menu-item routerLink="/reports">Promedio Notificaciones</button>
 </mat-menu>
