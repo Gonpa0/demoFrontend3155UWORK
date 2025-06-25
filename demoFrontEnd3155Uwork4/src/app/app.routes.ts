@@ -5,7 +5,6 @@ import { Rol } from './components/rol/rol';
 import { Insertareditarrol } from './components/rol/insertareditarrol/insertareditarrol';
 import { Premio } from './components/premio/premio';
 import { Insertareditarpremio } from './components/premio/insertareditarpremio/insertareditarpremio';
-import { Articulo } from './components/articulo/articulo';
 import { Home } from './components/home/home';
 import { Nosotros } from './components/nosotros/nosotros';
 import { Usuario } from './components/usuario/usuario';
@@ -13,6 +12,10 @@ import { Insertareditarusuario } from './components/usuario/insertareditarusuari
 import { Inicio } from './components/inicio/inicio';
 import { Usuariopremio } from './components/usuariopremio/usuariopremio';
 import { Insertareditarusuariopremio } from './components/usuariopremio/insertareditarusuariopremio/insertareditarusuariopremio';
+import { ArticuloComponent } from './components/articulo/articulo';
+import { Insertareditararticulo } from './components/articulo/insertareditararticulo/insertareditararticulo';
+import { Comentarioarticulo } from './components/comentarioarticulo/comentarioarticulo';
+import { Insertareditarcomentarioarticulo } from './components/comentarioarticulo/insertareditarcomentarioarticulo/insertareditarcomentarioarticulo';
 
 
 
@@ -61,9 +64,6 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'articulos', component:Articulo,
-    },
-    {
         path:'home', component:Home,
         },
     {
@@ -80,14 +80,6 @@ export const routes: Routes = [
             }
         ]
     },
-
-
-
-
-
-
-
-
     {
         path:'usuariopremios',component:Usuariopremio,
         children:[
@@ -99,4 +91,27 @@ export const routes: Routes = [
             }
         ]
     },
+      {
+        path:'articulos', component:ArticuloComponent,
+        children:[
+          {
+            path:'nuevo', component:Insertareditararticulo
+          },
+          {
+                path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+          }
+        ]
+    },
+    {
+      path:'comentarioarticulos', component:Comentarioarticulo,
+      children:[
+        {
+          path:'nuevo', component:Insertareditarcomentarioarticulo
+        },
+        {
+          path:'ediciones/:id', component:Insertareditarcomentarioarticulo
+        }
+      ]
+
+    }
 ];

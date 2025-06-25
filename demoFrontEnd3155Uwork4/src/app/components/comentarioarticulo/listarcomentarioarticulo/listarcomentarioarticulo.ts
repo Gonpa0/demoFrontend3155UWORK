@@ -1,38 +1,38 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import { ComentarioArticulo } from '../../../models/ComentarioArticulo';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { ComentarioarticuloService } from '../../../services/comentarioarticulo.service';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { Articulo } from '../../../models/Articulo';
-import { ArticuloService } from '../../../services/articulo.service';
-import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-listararticulo',
+  selector: 'app-listarcomentarioarticulo',
   imports: [
     MatTableModule,
     MatIconModule,
+    MatPaginatorModule,
     MatButtonModule,
-    RouterLink,
-    MatPaginator
+    RouterLink
   ],
-  templateUrl: './listararticulo.html',
-  styleUrl: './listararticulo.css'
+  templateUrl: './listarcomentarioarticulo.html',
+  styleUrl: './listarcomentarioarticulo.css'
 })
-export class Listararticulo {
-   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7','c8'];
-  dataSource:MatTableDataSource<Articulo>=new MatTableDataSource()
+export class Listarcomentarioarticulo {
+   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7'];
+  dataSource:MatTableDataSource<ComentarioArticulo>=new MatTableDataSource()
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private articuloS:ArticuloService){
+  constructor(private comentarioarticuloS:ComentarioarticuloService){
   }
 
   ngOnInit(): void {
-      this.articuloS.list().subscribe(data=>{
+      this.comentarioarticuloS.list().subscribe(data=>{
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
       })
-      this.articuloS.getList().subscribe(data=>{
+      this.comentarioarticuloS.getList().subscribe(data=>{
         // Actualizamos solo los datos para no romper el enlace con la tabla HTML.
         // Así la tabla se refresca automáticamente sin recrearla.
         this.dataSource.data = data
@@ -41,11 +41,11 @@ export class Listararticulo {
   } /*this.dataSource= new MatTableDataSource(data) <= No funciona para actualizar automaticamente cuando hago new MatTableDataSource(data)*/
 
   eliminar(id:number){
-    this.articuloS.deleteArticulo(id).subscribe(data=>{
+    this.comentarioarticuloS.deleteComentarioArticulo(id).subscribe(data=>{
       console.log('Eliminado:', data); /* Para ver si funciona el metodo delete en consola */
-      this.articuloS.list().subscribe(data=>{
+      this.comentarioarticuloS.list().subscribe(data=>{
          console.log('Lista recargada:', data); /* Para ver si actualiza la lista al hacer el delete en consola */
-        this.articuloS.setList(data)
+        this.comentarioarticuloS.setList(data)
         this.dataSource.paginator = this.paginator;
       })
     })
