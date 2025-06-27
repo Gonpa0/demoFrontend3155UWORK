@@ -106,13 +106,23 @@ export class Insertareditarcomentarioarticulo implements OnInit{
         this.form.patchValue({
           codigo: data.idComentario,
           contenido: data.contenido,
-          fecha: data.fecha,
+          fecha: this.convertirUTCaLocal(data.fecha),
           tituloarticulo: data.articulo.idArticulo,
           nombreusuario: data.usuario.idUsuario
         });
       });
     });
   }
+}
+
+
+convertirUTCaLocal(fecha: string | Date): Date {
+  const fechaDate = new Date(fecha);
+  return new Date(
+    fechaDate.getFullYear(),
+    fechaDate.getMonth(),
+    fechaDate.getDate() + 1 // ← ¡aquí se suma 1 día!
+  );
 }
 
 }
