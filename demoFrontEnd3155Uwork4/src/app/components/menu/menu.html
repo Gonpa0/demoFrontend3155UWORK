@@ -124,6 +124,20 @@
     </button>
   </div>
 
+    <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuDisponibilidades" class="btn-rojo">
+      <mat-icon>description</mat-icon>
+      Disponibilidades
+    </button>
+  </div>
+
+    <div *ngIf="isLoggedIn">
+    <button mat-button [matMenuTriggerFor]="menuArchivos" class="btn-rojo">
+      <mat-icon>description</mat-icon>
+      Archivos
+    </button>
+  </div>
+
  <span class="spacer"></span>
 
   <div>
@@ -195,5 +209,15 @@
 </mat-menu>
 
 <mat-menu #menuReportes="matMenu">
- <button mat-menu-item routerLink="/reports">Promedio Notificaciones</button>
+  <button mat-menu-item routerLink="/reports">Promedio Notificaciones</button>
+</mat-menu>
+
+<mat-menu #menuDisponibilidades="matMenu">
+  <button mat-menu-item routerLink="/disponibilidades">Listar</button>
+  <button mat-menu-item routerLink="/disponibilidades/nuevo">Registrar</button>
+</mat-menu>
+
+<mat-menu #menuArchivos="matMenu">
+  <button mat-menu-item routerLink="/archivos">Listar</button>
+  <button mat-menu-item routerLink="/archivos/nuevo">Registrar</button>
 </mat-menu>

@@ -98,7 +98,7 @@ export class Insertareditararticulo implements OnInit{
           codigo: data.idArticulo,
           titulo: data.titulo,
           contenido: data.contenido,
-          fecha: data.fecha,
+          fecha: this.convertirUTCaLocal(data.fecha),
           autor: data.autor,
           usuario: data.usuario.idUsuario
         });
@@ -106,5 +106,18 @@ export class Insertareditararticulo implements OnInit{
     });
   }
 }
+
+//FUNCION PARA QUE LE SUME 1 AL DIA
+
+convertirUTCaLocal(fecha: string | Date): Date {
+  const fechaDate = new Date(fecha);
+  return new Date(
+    fechaDate.getFullYear(),
+    fechaDate.getMonth(),
+    fechaDate.getDate() + 1 // ← ¡aquí se suma 1 día!
+  );
+}
+
+
 
 }
