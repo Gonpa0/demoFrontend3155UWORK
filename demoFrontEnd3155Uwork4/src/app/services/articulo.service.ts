@@ -46,4 +46,10 @@ export class ArticuloService {
     return this.h.delete(`${this.url}/${id}`)
   }
 
+  //FILTRO PARA BUSCAR POR PALABRA CLAVE EN LA LISTA DE ARTICULOS
+  searchKeyword(keyword:string){
+    //IMPORTANTE PASAR EL NOMBRE TAL CUAL DEL PARAMETRO QUE ESTA EN EL BACKEND
+     const params={ keyword }
+    return this.h.get<Articulo[]>(`${this.url}/buscar`,{params})
+  }
 }

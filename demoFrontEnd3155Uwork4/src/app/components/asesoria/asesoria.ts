@@ -4,15 +4,14 @@ import { Listarasesoria } from './listarasesoria/listarasesoria';
 
 @Component({
   selector: 'app-asesoria',
-  imports: [RouterOutlet, Listarasesoria],
+
+  imports: [RouterOutlet,Listarasesoria],
+
   templateUrl: './asesoria.html',
   styleUrl: './asesoria.css'
 })
 export class Asesoria {
 
-  constructor(public route: ActivatedRoute) {
-    // Aquí puedes inicializar cualquier lógica necesaria para el componente
-
-  }
+  constructor(public route:ActivatedRoute){}
 
 }

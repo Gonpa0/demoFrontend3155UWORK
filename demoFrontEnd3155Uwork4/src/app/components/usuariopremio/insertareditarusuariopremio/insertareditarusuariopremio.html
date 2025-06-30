@@ -1,6 +1,6 @@
 <div class="container">
     <div style="text-align: center; margin:5%"><h1>Registro de Usuarios-Premio</h1></div>
-    <div>
+    <div style="text-align: center;margin:5%">
     <form [formGroup]="form" (submit)="aceptar()">
         
         <mat-form-field *ngIf="edicion">
@@ -34,6 +34,7 @@
             Usuario es obligatorio!!
         </mat-error>
         </mat-form-field>
+        <br>
         <button matButton="filled">Registrar</button>
     </form>
     </div>

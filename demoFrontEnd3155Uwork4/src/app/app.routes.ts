@@ -14,6 +14,22 @@ import { Usuariopremio } from './components/usuariopremio/usuariopremio';
 import { Insertareditarusuariopremio } from './components/usuariopremio/insertareditarusuariopremio/insertareditarusuariopremio';
 import { ArticuloComponent } from './components/articulo/articulo';
 import { Insertareditararticulo } from './components/articulo/insertareditararticulo/insertareditararticulo';
+import { Comentarioarticulo } from './components/comentarioarticulo/comentarioarticulo';
+import { Insertareditarcomentarioarticulo } from './components/comentarioarticulo/insertareditarcomentarioarticulo/insertareditarcomentarioarticulo';
+import { Asesoria } from './components/asesoria/asesoria';
+import { Insertareditarasesoria } from './components/asesoria/insertareditarasesoria/insertareditarasesoria';
+import { Insertareditarvaloracion } from './components/valoracion/insertareditarvaloracion/insertareditarvaloracion';
+import { Insertareditarmensaje } from './components/mensaje/insertareditarmensaje/insertareditarmensaje';
+import { Valoracion } from './components/valoracion/valoracion';
+import { Mensaje } from './components/mensaje/mensaje';
+import { Notificacion } from './components/notificacion/notificacion';
+import { Insertareditarnotificacion } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion';
+import { Buscar } from './components/articulo/buscar/buscar';
+import { Reportes } from './components/reportes/reportes';
+import { Disponibilidad } from './components/disponibilidad/disponibilidad';
+import { Insertareditardisponibilidad } from './components/disponibilidad/insertareditardisponibilidad/insertareditardisponibilidad';
+import { Archivo } from './components/archivo/archivo';
+import { Insertareditararchivo } from './components/archivo/insertareditararchivo/insertareditararchivo';
 
 
 
@@ -96,8 +112,93 @@ export const routes: Routes = [
             path:'nuevo', component:Insertareditararticulo
           },
           {
-                path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+            path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+          },
+          {
+            path:'busquedas', component:Buscar
           }
         ]
-    }, //eliminar antes de hacer el commit para que no de error
+    },
+    {
+      path:'comentarioarticulos', component:Comentarioarticulo,
+      children:[
+        {
+          path:'nuevo', component:Insertareditarcomentarioarticulo
+        },
+        {
+          path:'ediciones/:id', component:Insertareditarcomentarioarticulo
+        }
+      ]
+
+    },
+    {
+        path:'asesorias', component:Asesoria,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarasesoria
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarasesoria
+            }
+        ]
+    },
+    {
+        path:'valoraciones', component:Valoracion,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarvaloracion
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarvaloracion
+            }
+        ]
+    },
+    {
+        path:'mensajes', component:Mensaje,
+        children:[
+            {
+                path:'nuevo',component:Insertareditarmensaje
+            },
+            {
+                path:'ediciones/:id',component:Insertareditarmensaje
+            }
+        ]
+    },
+    {
+      path:'notificaciones', component:Notificacion,
+      children:[
+        {
+           path:'nuevo',component:Insertareditarnotificacion
+        },
+        {
+            path:'ediciones/:id',component:Insertareditarnotificacion
+        }
+      ]
+    },
+    {
+      path:'reports', component:Reportes
+    },
+      {
+      path:'disponibilidades', component:Disponibilidad,
+      children:[
+        {
+          path:'nuevo', component:Insertareditardisponibilidad
+        },
+        {
+          path:'ediciones/:id', component:Insertareditardisponibilidad,
+
+        }
+      ]
+    },
+    {
+      path:'archivos', component:Archivo,
+      children:[
+        {
+          path:'nuevo',component:Insertareditararchivo
+        },
+        {
+          path:'ediciones/:id',component:Insertareditararchivo
+        }
+      ]
+    }
 ];
