@@ -1,3 +1,4 @@
+
 import { Asesoria } from "./Asesoria"
 import { Usuario } from "./Usuario"
 
@@ -6,4 +7,5 @@ export class Valoracion{
     calificacion: number = 0
     asesoria: Asesoria = new Asesoria()
     usuario: Usuario = new Usuario()
+
 }

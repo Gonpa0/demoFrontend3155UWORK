@@ -19,7 +19,6 @@ export class Listarasesoria implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private aS:AsesoriaService){}
-
   ngOnInit(): void {
     this.aS.list().subscribe(data=>{
         this.dataSource.data = data
@@ -30,6 +29,7 @@ export class Listarasesoria implements OnInit{
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
       })
+
   }
   eliminar(id: number){
     this.aS.deleteA(id).subscribe(data=>{
