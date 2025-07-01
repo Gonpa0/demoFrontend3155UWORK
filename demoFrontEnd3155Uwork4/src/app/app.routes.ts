@@ -22,6 +22,14 @@ import { Insertareditarvaloracion } from './components/valoracion/insertareditar
 import { Insertareditarmensaje } from './components/mensaje/insertareditarmensaje/insertareditarmensaje';
 import { Valoracion } from './components/valoracion/valoracion';
 import { Mensaje } from './components/mensaje/mensaje';
+import { Notificacion } from './components/notificacion/notificacion';
+import { Insertareditarnotificacion } from './components/notificacion/insertareditarnotificacion/insertareditarnotificacion';
+import { Buscar } from './components/articulo/buscar/buscar';
+import { Reportes } from './components/reportes/reportes';
+import { Disponibilidad } from './components/disponibilidad/disponibilidad';
+import { Insertareditardisponibilidad } from './components/disponibilidad/insertareditardisponibilidad/insertareditardisponibilidad';
+import { Archivo } from './components/archivo/archivo';
+import { Insertareditararchivo } from './components/archivo/insertareditararchivo/insertareditararchivo';
 
 
 
@@ -104,7 +112,10 @@ export const routes: Routes = [
             path:'nuevo', component:Insertareditararticulo
           },
           {
-                path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+            path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
+          },
+          {
+            path:'busquedas', component:Buscar
           }
         ]
     },
@@ -152,5 +163,42 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditarmensaje
             }
         ]
+    },
+    {
+      path:'notificaciones', component:Notificacion,
+      children:[
+        {
+           path:'nuevo',component:Insertareditarnotificacion
+        },
+        {
+            path:'ediciones/:id',component:Insertareditarnotificacion
+        }
+      ]
+    },
+    {
+      path:'reports', component:Reportes
+    },
+      {
+      path:'disponibilidades', component:Disponibilidad,
+      children:[
+        {
+          path:'nuevo', component:Insertareditardisponibilidad
+        },
+        {
+          path:'ediciones/:id', component:Insertareditardisponibilidad,
+
+        }
+      ]
+    },
+    {
+      path:'archivos', component:Archivo,
+      children:[
+        {
+          path:'nuevo',component:Insertareditararchivo
+        },
+        {
+          path:'ediciones/:id',component:Insertareditararchivo
+        }
+      ]
     }
 ];

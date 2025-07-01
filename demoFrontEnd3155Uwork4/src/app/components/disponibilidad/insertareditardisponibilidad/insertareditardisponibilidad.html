@@ -1,0 +1,70 @@
+<div class="container">
+  <div style="text-align: center; margin:5%">
+    <h1>Registro de Disponibilidades</h1>
+  </div>
+
+  <div style="text-align: center; margin:5%">
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field *ngIf="edicion">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+        <mat-error *ngIf="form.get('codigo')?.hasError('required')">
+          El código es obligatorio !!
+        </mat-error>
+      </mat-form-field>
+
+      <br><br>
+
+      <mat-form-field>
+        <mat-label>Escoge la fecha</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha">
+        <mat-hint>Mes/Día/Año</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fecha')?.hasError('required')">
+          La fecha de disponibilidad es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br><br>
+
+      <!-- COMPONENTES PARA HORA INICIO Y HORA FIN -->
+      <mat-form-field>
+        <mat-label>Hora de Inicio</mat-label>
+        <input matInput type="time" formControlName="horaInicio">
+        <mat-error *ngIf="form.get('horaInicio')?.hasError('required')">
+          La hora de inicio es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br><br>
+
+      <mat-form-field>
+        <mat-label>Hora de Fin</mat-label>
+        <input matInput type="time" formControlName="horaFin">
+        <mat-error *ngIf="form.get('horaFin')?.hasError('required')">
+          La hora de fin es obligatoria!!
+        </mat-error>
+      </mat-form-field>
+
+      <br><br>
+
+      <mat-form-field>
+        <mat-label>Estudiantes</mat-label>
+        <mat-select formControlName="nombreusuario">
+          @for (food of listaUsuarios; track food) {
+            <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.get('nombreusuario')?.hasError('required')">
+          El estudiante es obligatorio!!
+        </mat-error>
+      </mat-form-field>
+
+      <br><br>
+
+      <button matButton="filled">Registrar</button>
+    </form>
+  </div>
+</div>

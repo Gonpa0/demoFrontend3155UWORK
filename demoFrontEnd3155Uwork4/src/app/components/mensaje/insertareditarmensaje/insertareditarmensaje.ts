@@ -38,7 +38,7 @@ export class Insertareditarmensaje implements OnInit{
   edicion: boolean = false
   listaUsuarios: Usuario[]=[]
   listaAsesorias: Asesoria[]=[]
-  
+
   constructor(
       private formBuilder: FormBuilder,
       private mS: MensajeService,
@@ -47,7 +47,7 @@ export class Insertareditarmensaje implements OnInit{
       private uS:UsuarioService,
       private aS: AsesoriaService
   ){}
-  
+
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id']
@@ -74,7 +74,7 @@ export class Insertareditarmensaje implements OnInit{
       this.mensaje.idMensaje = this.form.value.codigo,
       this.mensaje.contenido = this.form.value.contenido,
       this.mensaje.fechaMensaje = this.form.value.fechaMensaje,
-      this.mensaje.Orden = this.form.value.orden,
+      this.mensaje.orden = this.form.value.orden,
       this.mensaje.usuario.idUsuario = this.form.value.usuario,
       this.mensaje.asesoria.idAsesoria = this.form.value.asesoria
       if (this.edicion) {
@@ -101,7 +101,7 @@ export class Insertareditarmensaje implements OnInit{
           codigo: data.idMensaje,
           contenido: data.contenido,
           fechaMensaje: data.fechaMensaje,
-          orden: data.Orden,
+          orden: data.orden,
           usuario: data.usuario.idUsuario,
           asesoria: data.asesoria.idAsesoria
         })
