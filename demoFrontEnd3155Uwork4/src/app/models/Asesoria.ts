@@ -1,3 +1,4 @@
+
 import { Usuario } from "./Usuario"
 
 export class Asesoria{
@@ -6,4 +7,5 @@ export class Asesoria{
     fechaAsesoria: Date= new Date()
     usuarioInferior: Usuario = new Usuario()
     usuarioSuperior: Usuario = new Usuario()
+
 }
