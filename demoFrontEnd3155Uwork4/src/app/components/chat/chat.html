@@ -1,0 +1,20 @@
+<h2>Chat con Gemini</h2>
+
+<div style="margin-top: 1rem;">
+  <mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Escribe tu mensaje</mat-label>
+    <textarea matInput [(ngModel)]="prompt" rows="4" placeholder="Haz una pregunta a la IA..."></textarea>
+  </mat-form-field>
+
+  <!-- Input de archivo -->
+  <input type="file" (change)="onFileSelected($event)" />
+
+  <button mat-raised-button color="accent" (click)="enviar()">Enviar</button>
+</div>
+
+<div *ngIf="respuesta" style="margin-top: 2rem;">
+  <h3>Respuesta:</h3>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <textarea matInput [value]="respuesta" readonly rows="6"></textarea>
+  </mat-form-field>
+</div>

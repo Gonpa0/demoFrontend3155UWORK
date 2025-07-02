@@ -31,6 +31,10 @@ import { Insertareditardisponibilidad } from './components/disponibilidad/insert
 import { Archivo } from './components/archivo/archivo';
 import { Insertareditararchivo } from './components/archivo/insertareditararchivo/insertareditararchivo';
 import { ChatAsesoria } from './components/asesoria/chat-asesoria/chat-asesoria';
+import { Listausariossinpassword } from './components/usuario/listausariossinpassword/listausariossinpassword';
+import { seguridadGuard } from './guard/seguridad.guard';
+import { Login } from './components/login/login';
+import { Chat } from './components/chat/chat';
 
 
 
@@ -40,10 +44,17 @@ import { ChatAsesoria } from './components/asesoria/chat-asesoria/chat-asesoria'
 
 export const routes: Routes = [
     {
-      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+      path:'',redirectTo:'login',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
     },
     {
-        path:'inicio',component:Inicio
+        path:'login', component:Login
+    },
+    /*{
+      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+    },*/
+    {
+        path:'inicio',component:Inicio,
+        canActivate: [seguridadGuard],
     },
     {
         path:'formatoarchivos',component:Formatoarchivo,
@@ -53,8 +64,9 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id',component:Insertareditar
-            }
-        ]
+            },
+        ],
+        canActivate: [seguridadGuard],
     },
     {
         path:'roles',component:Rol,
@@ -65,7 +77,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id',component:Insertareditarrol
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
         path:'premios', component:Premio,
@@ -76,13 +89,16 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id',component:Insertareditarpremio
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
         path:'home', component:Home,
-        },
+        canActivate: [seguridadGuard],
+    },
     {
         path:'nosotros', component:Nosotros,
+        canActivate: [seguridadGuard],
     },
     {
         path:'usuarios',component:Usuario,
@@ -92,8 +108,12 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id',component:Insertareditarusuario
+            },
+            {
+              path:'listarsinpassword',component:Listausariossinpassword
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
         path:'usuariopremios',component:Usuariopremio,
@@ -104,7 +124,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id',component:Insertareditarusuariopremio
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
       {
         path:'articulos', component:ArticuloComponent,
@@ -118,7 +139,8 @@ export const routes: Routes = [
           {
             path:'busquedas', component:Buscar
           }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
       path:'comentarioarticulos', component:Comentarioarticulo,
@@ -129,7 +151,8 @@ export const routes: Routes = [
         {
           path:'ediciones/:id', component:Insertareditarcomentarioarticulo
         }
-      ]
+      ],
+      canActivate: [seguridadGuard],
 
     },
     {
@@ -144,7 +167,8 @@ export const routes: Routes = [
             {
                 path:'chat/:id',component:ChatAsesoria
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
         path:'valoraciones', component:Valoracion,
@@ -155,7 +179,8 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id',component:Insertareditarvaloracion
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
         path:'mensajes', component:Mensaje,
@@ -166,21 +191,23 @@ export const routes: Routes = [
             {
                 path:'ediciones/:id',component:Insertareditarmensaje
             }
-        ]
+        ],
+        canActivate: [seguridadGuard],
     },
     {
       path:'notificaciones', component:Notificacion,
       children:[
         {
-           path:'nuevo',component:Insertareditarnotificacion
+            path:'nuevo',component:Insertareditarnotificacion
         },
         {
             path:'ediciones/:id',component:Insertareditarnotificacion
         }
-      ]
+      ],
+      canActivate: [seguridadGuard],
     },
     {
-      path:'reports', component:Reportes
+      path:'reports', component:Reportes,canActivate: [seguridadGuard],
     },
       {
       path:'disponibilidades', component:Disponibilidad,
@@ -190,9 +217,9 @@ export const routes: Routes = [
         },
         {
           path:'ediciones/:id', component:Insertareditardisponibilidad,
-
         }
-      ]
+      ],
+      canActivate: [seguridadGuard],
     },
     {
       path:'archivos', component:Archivo,
@@ -203,6 +230,11 @@ export const routes: Routes = [
         {
           path:'ediciones/:id',component:Insertareditararchivo
         }
-      ]
+      ],
+      canActivate: [seguridadGuard],
+    },
+    {
+        path: 'chatIA', component: Chat, 
+        canActivate: [seguridadGuard],
     }
 ];
