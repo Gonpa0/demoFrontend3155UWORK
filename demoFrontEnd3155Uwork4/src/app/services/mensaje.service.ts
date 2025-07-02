@@ -28,6 +28,12 @@ export class MensajeService {
     listId(id:number) {
       return this.http.get<Mensaje>(`${this.url}/${id}`);
     }
+
+    //metodo del para implementar el chat asesoria
+    listarMensajesPorAsesoria(idAsesoria: number) {
+    return this.http.get<Mensaje[]>(`${this.url}/asesoria/${idAsesoria}`);
+    }
+
     update(m:Mensaje) {
       return this.http.put(this.url, m);
     }

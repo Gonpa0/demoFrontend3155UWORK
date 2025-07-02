@@ -40,16 +40,16 @@ export class Reportepromedionotificacion implements OnInit {
     plugins: { legend: { position: 'top' } } // la leyenda aparece arriba
   };
 
-  // Etiquetas del gráfico (ejemplo: Ciclo Superior, Ciclo Inferior)
+  // Etiquetas del gráfico -> Ciclo Superior y  Ciclo Inferior)
   public pieChartLabels: string[] = [];
 
   // Datos que se mostrarán en el gráfico
   public pieChartDatasets: ChartDataset<'pie', number[]>[] = [];
 
-  // Tipo de gráfico (pie en este caso)
+  // Tipo de gráfico : pie
   public pieChartType: ChartType = 'pie';
 
-  // Mostrar la leyenda (true)
+  // Mostrar la leyenda : true
   public pieChartLegend = true;
 
   // Inyectamos el servicio para obtener los datos del backend
@@ -74,8 +74,8 @@ export class Reportepromedionotificacion implements OnInit {
           backgroundColor: [ // Colores para cada porción
             '#FF6384', // rojo rosado para un grupo
             '#36A2EB', // azul para otro grupo
-            '#FFCE56', // amarillo si hay un tercer grupo
-            '#4BC0C0'  // celeste si hay un cuarto grupo
+            '#FFCE56', // amarillo si hay un tercer grupo - opcional
+            '#4BC0C0'  // celeste si hay un cuarto grupo - opcional
           ],
           borderColor: '#ffffff', // color del borde entre porciones
           borderWidth: 1          // grosor del borde

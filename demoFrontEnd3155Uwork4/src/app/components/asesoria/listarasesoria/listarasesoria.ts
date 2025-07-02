@@ -14,7 +14,7 @@ import { AsesoriaService } from '../../../services/asesoria.service';
   styleUrl: './listarasesoria.css'
 })
 export class Listarasesoria implements OnInit{
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5', 'c6', 'c7']
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5', 'c6', 'c7','c8']
   dataSource: MatTableDataSource<Asesoria> = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -24,7 +24,7 @@ export class Listarasesoria implements OnInit{
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
       })
-      
+
       this.aS.getList().subscribe(data=>{
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
