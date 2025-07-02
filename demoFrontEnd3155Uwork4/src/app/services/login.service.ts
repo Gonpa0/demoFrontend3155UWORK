@@ -26,5 +26,16 @@ export class LoginService {
     const decodedToken = helper.decodeToken(token);
     return decodedToken?.role;
   }
+
+  getIdUsuario(): number | null {
+  const token = sessionStorage.getItem('token');
+  if (!token) return null;
+
+  const helper = new JwtHelperService();
+  const decodedToken = helper.decodeToken(token);
+
+  return decodedToken?.idUsuario || null;
+}
+
 }
 

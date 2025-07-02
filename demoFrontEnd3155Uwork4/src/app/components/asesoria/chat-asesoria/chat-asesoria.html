@@ -1,8 +1,9 @@
 <div class="chat-container">
-  <h2>Chat de Asesoría #{{ idAsesoria }}</h2>
+  <h2>Chat de Asesoría # {{ idAsesoria }}</h2>
+  <h2>NOMBRE DE ASESORÍA: {{ nameAsesoria }}</h2>
 
   <!-- Zona de mensajes -->
-  <div #mensajesContainer class="mensajes"><!-- agregado #mensajesContainer -->
+  <div #mensajesContainer class="mensajes"> <!-- agregado #mensajesContainer -->
     <div *ngFor="let mensaje of mensajes" class="mensaje">
       <strong>{{ mensaje.usuario.username }}:</strong>
       <span>{{ mensaje.contenido }}</span>
@@ -16,14 +17,13 @@
     <ul>
       <li *ngFor="let archivo of archivos">
         <mat-icon>attach_file</mat-icon>
-        {{ archivo.nombreArchivo }}
+        {{ archivo.nombreArchivo }} (Subido por: {{archivo.usuario.username}})
 
         <!-- BOTON PARA DESCARGAR PERO FALTA EL METODO TODAVIA PARA QUE FUNCIONE - FALTA TODAVIA LA IMPLEMENTACION
         <button mat-button color="primary" (click)="descargarArchivo(archivo.nombreArchivo)">
           Descargar
         </button>
         -->
-
       </li>
     </ul>
   </div>
@@ -36,7 +36,7 @@
       placeholder="Escribe tu mensaje..."
       (keydown.enter)="enviarMensaje()"
     />
-    <button mat-raised-button color="primary" (click)="enviarMensaje()">Enviar</button>
+    <button mat-raised-button color="primary" (click)="enviarMensaje()" [disabled]="contenidoNuevo.length===0">Enviar</button>
   </div>
 
   <!-- Subida de archivo  -->
