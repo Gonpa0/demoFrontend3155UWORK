@@ -1,0 +1,89 @@
+.chat-container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fefefe;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.chat-container h2 {
+  text-align: center;
+  color: #3f51b5;
+  margin-bottom: 20px;
+}
+
+.mensajes {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #fff;
+  margin-bottom: 20px;
+}
+
+.mensaje {
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #e3f2fd;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.mensaje strong {
+  display: block;
+  color: #1976d2;
+  margin-bottom: 4px;
+}
+
+.mensaje .fecha {
+  font-size: 11px;
+  color: #888;
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
+}
+
+.nuevo-mensaje {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nuevo-mensaje input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.nuevo-mensaje input:focus {
+  border-color: #3f51b5;
+}
+
+.nuevo-mensaje button {
+  height: 40px;
+  min-width: 80px;
+}
+
+.archivos {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.archivos h3 {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.archivos input[type="file"] {
+  margin-bottom: 10px;
+}

@@ -46,4 +46,16 @@ export class ArchivoService {
     return this.h.delete(`${this.url}/${id}`)
   }
 
+
+  //METODO PARA SubIR un archivo local desde el frontend y guarda sus metadatos (nombre, fecha, usuario, asesoría, formato) en la BD.
+
+  subirArchivo(formData: FormData) {
+  return this.h.post(`${this.url}/upload`, formData);
+  }
+
+  // Lista los archivos subidos para una asesoría específica (por idAsesoria) para mostrarlos en el chat.
+
+  listarPorAsesoria(id: number) {
+  return this.h.get<Archivo[]>(`${this.url}/asesoria/${id}`);
+}
 }

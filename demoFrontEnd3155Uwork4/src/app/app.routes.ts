@@ -30,6 +30,7 @@ import { Disponibilidad } from './components/disponibilidad/disponibilidad';
 import { Insertareditardisponibilidad } from './components/disponibilidad/insertareditardisponibilidad/insertareditardisponibilidad';
 import { Archivo } from './components/archivo/archivo';
 import { Insertareditararchivo } from './components/archivo/insertareditararchivo/insertareditararchivo';
+import { ChatAsesoria } from './components/asesoria/chat-asesoria/chat-asesoria';
 
 
 
@@ -139,6 +140,9 @@ export const routes: Routes = [
             },
             {
                 path:'ediciones/:id',component:Insertareditarasesoria
+            },
+            {
+                path:'chat/:id',component:ChatAsesoria
             }
         ]
     },
