@@ -44,7 +44,7 @@ import { Chat } from './components/chat/chat';
 
 export const routes: Routes = [
     {
-      path:'',redirectTo:'login',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
+      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
     },
     {
         path:'login', component:Login
@@ -94,7 +94,7 @@ export const routes: Routes = [
     },
     {
         path:'home', component:Home,
-        canActivate: [seguridadGuard],
+        // canActivate: [seguridadGuard],
     },
     {
         path:'nosotros', component:Nosotros,
@@ -165,10 +165,10 @@ export const routes: Routes = [
                 path:'ediciones/:id',component:Insertareditarasesoria
             },
             {
-                path:'chat/:id',component:ChatAsesoria
+                path:'chat/:id/:nombreAsesoria',component:ChatAsesoria
             }
         ],
-        canActivate: [seguridadGuard],
+      //  canActivate: [seguridadGuard],
     },
     {
         path:'valoraciones', component:Valoracion,
@@ -234,7 +234,7 @@ export const routes: Routes = [
       canActivate: [seguridadGuard],
     },
     {
-        path: 'chatIA', component: Chat, 
+        path: 'chatIA', component: Chat,
         canActivate: [seguridadGuard],
     }
 ];
