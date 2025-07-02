@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #3f51b5;
+  margin-bottom: 1rem;
+}
+
+mat-form-field {
+  margin-bottom: 1rem;
+}
+
+button {
+  display: block;
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.respuesta-container {
+  background-color: #f3f3f3;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+mat-form-field textarea[readonly] {
+  background-color: #e0e0e0;
+  cursor: default;
+}
