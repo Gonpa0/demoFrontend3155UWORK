@@ -6,6 +6,8 @@ import { NotificacionService } from '../../../services/notificacion.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listarnotificacion',
@@ -13,17 +15,26 @@ import { RouterLink } from '@angular/router';
     MatIconModule,
     MatPaginatorModule,
     MatButtonModule,
-    RouterLink
+    RouterLink,
+    CommonModule
   ],
   templateUrl: './listarnotificacion.html',
   styleUrl: './listarnotificacion.css'
 })
 export class Listarnotificacion {
-   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7'];
+
+     allColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5','c6','c7'];
+  publicColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5'];
+  displayedColumns: string[] = this.publicColumns;
+
+
   dataSource:MatTableDataSource<Notificacion>=new MatTableDataSource()
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private notificacionS:NotificacionService){
+  isLoggedIn: boolean = false;
+    rolUsuario: string = '';
+
+  constructor(private notificacionS:NotificacionService, private loginService:LoginService){
   }
 
   ngOnInit(): void {
@@ -37,7 +48,29 @@ export class Listarnotificacion {
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
       })
+
+       // Escuchar estado de sesión
+    this.loginService.loginStatus$.subscribe(status => {
+      this.isLoggedIn = status;
+      this.verificarAcceso();
+    });
+
+    // Escuchar rol de usuario
+    this.loginService.userRol$.subscribe(rol => {
+      this.rolUsuario = rol;
+      this.verificarAcceso();
+    });
   } /*this.dataSource= new MatTableDataSource(data) <= No funciona para actualizar automaticamente cuando hago new MatTableDataSource(data)*/
+
+
+  verificarAcceso() {
+    if (this.isLoggedIn && (this.rolUsuario === 'ADMIN' || this.rolUsuario === 'DESARROLLADOR')) {
+      this.displayedColumns = this.allColumns;
+    } else {
+      this.displayedColumns = this.publicColumns;
+    }
+  }
+
 
   eliminar(id:number){
     this.notificacionS.deleteNotificacion(id).subscribe(data=>{

@@ -36,11 +36,8 @@ export class AsesoriaService {
       return this.http.delete(`${this.url}/${id}`);
     }
 
-    // FILTRO PARA BUSCAR ASESORÍAS POR FECHA
-searchByFecha(fecha: string) {
-  // IMPORTANTE: 'fecha' debe coincidir con el nombre del parámetro en el backend
-  const params = { fecha };
-  return this.http.get<Asesoria[]>(`${this.url}/buscarporfecha`, { params });
-}
+    listarPorUsuario(idUsuario: number) {
+    return this.http.get<Asesoria[]>(`${this.url}/usuario/${idUsuario}`);
+    }
 
 }
