@@ -1,36 +1,196 @@
-:host {
-  display: block;
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Variables CSS para una fácil personalización */
+:root {
+  --primary-color: #0056b3; /* Azul oscuro - ¡ideal para botones! */
+  --secondary-color: #e0e7fd; /* Azul claro para burbujas de IA */
+  --user-bubble-bg: #dcf8c6; /* Verde claro para burbujas de usuario */
+  --text-color: #333333; /* Gris oscuro - ¡ideal para la mayoría del texto! */
+  --border-color: #dddddd; /* Gris claro para bordes */
+  --background-page: #f8f9fa; /* Fondo muy claro de la página */
+  --background-container: #ffffff; /* Fondo blanco para el chat container */
+  --border-radius-main: 15px;
+  --border-radius-bubble: 18px;
+  --font-family: 'Segoe UI', 'Roboto', sans-serif;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
 }
 
-h2 {
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-page); /* Fondo general de la página */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text-color); /* Color de texto por defecto para todo el body */
+}
+
+.chat-container {
+  background-color: var(--background-container); /* Fondo blanco para el contenedor principal */
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-light); /* Sombra para que destaque */
+  width: 90%;
+  max-width: 650px; /* Ancho máximo ligeramente mayor */
+  height: 80vh; /* Altura fija para que se vea como una app */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Asegura que los bordes redondeados se vean bien */
+  margin: 20px auto; /* Centra y da margen */
+}
+
+h1 {
+  background-color: var(--primary-color); /* Fondo azul para el título */
+  color: black; /* Texto blanco en el título azul */
+  padding: 15px 20px;
+  margin: 0;
+  font-size: 1.5em;
   text-align: center;
-  color: #3f51b5;
-  margin-bottom: 1rem;
+  border-top-left-radius: var(--border-radius-main);
+  border-top-right-radius: var(--border-radius-main);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra sutil para el título */
 }
 
-mat-form-field {
-  margin-bottom: 1rem;
+h1::before {
+  content: '🤖 '; /* Icono de robot */
+  margin-right: 8px;
 }
 
-button {
-  display: block;
-  margin-top: 0.5rem;
-  margin-left: auto;
-  margin-right: 0;
+/* Área de mensajes (donde se muestran las burbujas) */
+.messages-area {
+  flex-grow: 1; /* Ocupa el espacio disponible */
+  padding: 20px;
+  overflow-y: auto; /* Para desplazamiento si hay muchos mensajes */
+  display: flex; /* Para que los mensajes floten correctamente */
+  flex-direction: column;
+  gap: 12px; /* Espacio entre burbujas */
 }
 
-.respuesta-container {
-  background-color: #f3f3f3;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* Estilos para las burbujas de mensaje */
+.message-bubble {
+  padding: 12px 18px;
+  border-radius: var(--border-radius-bubble);
+  max-width: 80%; /* Para que no ocupe todo el ancho */
+  word-wrap: break-word; /* Para que el texto largo se ajuste */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+  line-height: 1.4; /* Espaciado entre líneas para legibilidad */
+  color: var(--text-color); /* Asegura que el texto de la burbuja sea oscuro */
 }
 
-mat-form-field textarea[readonly] {
-  background-color: #e0e0e0;
-  cursor: default;
+.user-message {
+  align-self: flex-end; /* Alinea los mensajes del usuario a la derecha */
+  background-color: var(--user-bubble-bg); /* Fondo verde claro */
+  border-bottom-right-radius: 5px; /* Para la "punta" de la burbuja */
+}
+
+.gemini-response {
+  align-self: flex-start; /* Alinea los mensajes de la IA a la izquierda */
+  background-color: var(--secondary-color); /* Fondo azul claro */
+  border-bottom-left-radius: 5px; /* Para la "punta" de la burbuja */
+}
+
+/* Área de entrada de texto y archivo */
+.input-area {
+  display: flex;
+  flex-direction: column; /* Apila elementos verticalmente */
+  padding: 15px 20px;
+  border-top: 1px solid var(--border-color); /* Separador visual */
+  background-color: var(--background-container); /* Fondo blanco para esta área también */
+  gap: 10px; /* Espacio entre los elementos de entrada */
+  align-items: stretch; /* Estira elementos para ocupar el ancho */
+}
+
+.input-area textarea {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1em;
+  resize: vertical; /* Permite redimensionar verticalmente */
+  min-height: 50px;
+  max-height: 120px;
+  outline: none; /* Quita el contorno al enfocar */
+  color: var(--text-color); /* Color de texto oscuro para el textarea */
+  background-color: #959595; /* Un gris muy claro para el fondo del input */
+}
+
+.input-area input[type="file"] {
+  width: 100%; /* Ocupa todo el ancho */
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px;
+  background-color: #959595; /* Fondo gris claro para el input de archivo */
+  cursor: pointer;
+  font-size: 0.95em;
+  color: var(--text-color); /* Color de texto oscuro para el input de archivo */
+}
+
+.input-area button {
+  background-color: rgb(0, 101, 130); /* ¡Fondo azul oscuro para el botón! */
+  color: rgb(255, 255, 255); /* ¡Texto blanco para el botón! */
+  border: none;
+  border-radius: 8px;
+  padding: 12px 25px;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Ocupa todo el ancho */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
+}
+
+.input-area button:hover {
+  background-color: #004499; /* Tono más oscuro al pasar el ratón */
+}
+
+.input-area button:disabled {
+  background-color: #cccccc; /* Gris para el botón deshabilitado */
+  color: #666666; /* Texto oscuro para el botón deshabilitado */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Mensajes de error y carga */
+.error-message {
+  color: #d9534f; /* Rojo para errores */
+  background-color: #fcebeb; /* Fondo rojo muy claro */
+  border: 1px solid #ebccd1;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.loading-indicator {
+  text-align: center;
+  padding: 15px;
+  color: #6c757d; /* Gris para el texto de carga */
+  font-style: italic;
+}
+
+/* Animación de entrada para las burbujas */
+.message-bubble {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInBubble 0.3s forwards ease-out;
+}
+
+@keyframes fadeInBubble {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsividad básica */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 100%;
+    height: 100vh; /* Ocupa toda la altura en móviles */
+    border-radius: 0; /* Sin bordes redondeados en móviles para una experiencia full-screen */
+    box-shadow: none;
+  }
+
+  h1 {
+    border-radius: 0;
+  }
 }
