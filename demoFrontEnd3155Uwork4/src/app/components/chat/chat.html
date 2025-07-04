@@ -1,20 +1,35 @@
-<h2>Chat con Gemini</h2>
+<div class="chat-container">
+  <h1>Asistente Virtual UPC</h1>
 
-<div style="margin-top: 1rem;">
-  <mat-form-field appearance="fill" style="width: 100%;">
-    <mat-label>Escribe tu mensaje</mat-label>
-    <textarea matInput [(ngModel)]="prompt" rows="4" placeholder="Haz una pregunta a la IA..."></textarea>
-  </mat-form-field>
+  <div class="messages-area">
+    <div *ngIf="geminiResponse" class="message-bubble gemini-response">
+      <p>{{ geminiResponse }}</p>
+    </div>
+  </div>
 
-  <!-- Input de archivo -->
-  <input type="file" (change)="onFileSelected($event)" />
+  <div *ngIf="isLoading" class="loading-indicator">
+    <p>Cargando respuesta...</p>
+    </div>
 
-  <button mat-raised-button color="accent" (click)="enviar()">Enviar</button>
-</div>
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
 
-<div *ngIf="respuesta" style="margin-top: 2rem;">
-  <h3>Respuesta:</h3>
-  <mat-form-field appearance="outline" style="width: 100%;">
-    <textarea matInput [value]="respuesta" readonly rows="6"></textarea>
-  </mat-form-field>
+  <div class="input-area">
+    <textarea
+      [(ngModel)]="userPrompt"
+      placeholder="Haz tu pregunta aquí..."
+      rows="3"
+    ></textarea>
+
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*, audio/*, video/*, .pdf, .docx, .xlsx, .pptx, .txt"
+    />
+
+    <button (click)="enviarMensaje()" [disabled]="isLoading || (!userPrompt.trim() && !selectedFile)">
+      {{ isLoading ? 'Enviando...' : 'Enviar' }}
+    </button>
+  </div>
 </div>
