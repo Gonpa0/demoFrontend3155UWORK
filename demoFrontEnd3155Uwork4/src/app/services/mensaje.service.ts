@@ -16,8 +16,8 @@ export class MensajeService {
   list() {
       return this.http.get<Mensaje[]>(this.url);
     }
-    insert(m:Mensaje) {
-      return this.http.post(this.url, m);
+    insert(mensaje: any) {
+    return this.http.post(`${base_url}/mensaje`, mensaje);
     }
     setList(listaNueva:Mensaje[]) {
       this.listaCambio.next(listaNueva);
