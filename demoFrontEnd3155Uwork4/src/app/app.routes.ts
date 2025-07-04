@@ -37,204 +37,225 @@ import { Login } from './components/login/login';
 import { Chat } from './components/chat/chat';
 
 
-
-
-
-
-
 export const routes: Routes = [
-    {
-      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
-    },
-    {
-        path:'login', component:Login
-    },
-    /*{
-      path:'',redirectTo:'home',pathMatch:'full' //LA RUTA POR DEFECTO AL PONER http://localhost:4200/
-    },*/
-    {
-        path:'inicio',component:Inicio,
-        canActivate: [seguridadGuard],
-    },
-    {
-        path:'formatoarchivos',component:Formatoarchivo,
-        children:[
-            {
-                path:'nuevo',component:Insertareditar
-            },
-            {
-                path:'ediciones/:id',component:Insertareditar
-            },
-        ],
-        canActivate: [seguridadGuard],
-    },
-    {
-        path:'roles',component:Rol,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarrol
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarrol
-            }
-        ],
-        canActivate: [seguridadGuard],
-    },
-    {
-        path:'premios', component:Premio,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarpremio
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarpremio
-            }
-        ],
-        canActivate: [seguridadGuard],
-    },
-    {
-        path:'home', component:Home,
-        // canActivate: [seguridadGuard],
-    },
-    {
-        path:'nosotros', component:Nosotros,
-        canActivate: [seguridadGuard],
-    },
-    {
-        path:'usuarios',component:Usuario,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarusuario
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarusuario
-            },
-            {
-              path:'listarsinpassword',component:Listausariossinpassword
-            }
-        ],
-        canActivate: [seguridadGuard],
-    },
-    {
-        path:'usuariopremios',component:Usuariopremio,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarusuariopremio
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarusuariopremio
-            }
-        ],
-        canActivate: [seguridadGuard],
-    },
-      {
-        path:'articulos', component:ArticuloComponent,
-        children:[
-          {
-            path:'nuevo', component:Insertareditararticulo
-          },
-          {
-            path:'ediciones/:id',component:Insertareditararticulo //CUANDO FUNCIONE EL MODIFICAR
-          },
-          {
-            path:'busquedas', component:Buscar
-          }
-        ],
-        canActivate: [seguridadGuard],
-    },
-    {
-      path:'comentarioarticulos', component:Comentarioarticulo,
-      children:[
-        {
-          path:'nuevo', component:Insertareditarcomentarioarticulo
-        },
-        {
-          path:'ediciones/:id', component:Insertareditarcomentarioarticulo
-        }
-      ],
-      canActivate: [seguridadGuard],
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, //publico es el landing page
+  { path: 'home', component: Home }, //publico no necesitas ni estar logueado ni tener algun rol para ingresar
+  { path: 'nosotros', component: Nosotros }, //publico no necesitas ni estar logueado ni tener algun rol para ingresar
+  { path: 'login', component: Login }, //publico
+  { path: 'inicio', component: Inicio, canActivate: [seguridadGuard] }, //sin rol pero necesitas loguearte
+  { path: 'chatIA', component: Chat, canActivate: [seguridadGuard] }, //sin rol pero necesitas loguearte
 
-    },
-    {
-        path:'asesorias', component:Asesoria,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarasesoria
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarasesoria
-            },
-            {
-                path:'chat/:id/:nombreAsesoria',component:ChatAsesoria
-            }
-        ],
-      //  canActivate: [seguridadGuard],
-    },
-    {
-        path:'valoraciones', component:Valoracion,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarvaloracion
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarvaloracion
-            }
-        ],
+  // === PREMIOS ===
+  {
+    path: 'premios',
+    component: Premio, // publico no necesitas ni estar logueado ni tener algun rol para ingresar - listar premios
+    children: [
+      { path: 'nuevo', component: Insertareditarpremio,
         canActivate: [seguridadGuard],
-    },
-    {
-        path:'mensajes', component:Mensaje,
-        children:[
-            {
-                path:'nuevo',component:Insertareditarmensaje
-            },
-            {
-                path:'ediciones/:id',component:Insertareditarmensaje
-            }
-        ],
+    data: { roles: ['DESARROLLADOR','ADMIN'] }
+       },
+      { path: 'ediciones/:id', component: Insertareditarpremio,
         canActivate: [seguridadGuard],
-    },
-    {
-      path:'notificaciones', component:Notificacion,
-      children:[
-        {
-            path:'nuevo',component:Insertareditarnotificacion
-        },
-        {
-            path:'ediciones/:id',component:Insertareditarnotificacion
-        }
-      ],
-      canActivate: [seguridadGuard],
-    },
-    {
-      path:'reports', component:Reportes,canActivate: [seguridadGuard],
-    },
-      {
-      path:'disponibilidades', component:Disponibilidad,
-      children:[
-        {
-          path:'nuevo', component:Insertareditardisponibilidad
-        },
-        {
-          path:'ediciones/:id', component:Insertareditardisponibilidad,
-        }
-      ],
-      canActivate: [seguridadGuard],
-    },
-    {
-      path:'archivos', component:Archivo,
-      children:[
-        {
-          path:'nuevo',component:Insertareditararchivo
-        },
-        {
-          path:'ediciones/:id',component:Insertareditararchivo
-        }
-      ],
-      canActivate: [seguridadGuard],
-    },
-    {
-        path: 'chatIA', component: Chat,
+    data: { roles: ['DESARROLLADOR','ADMIN'] }
+      }
+    ]
+  },
+
+  // === ARTÍCULOS ===
+  {
+    path: 'articulos',
+    component: ArticuloComponent, // ✅ Pública
+    children: [
+      { path: 'nuevo', component: Insertareditararticulo, canActivate: [seguridadGuard] },
+      { path: 'ediciones/:id', component: Insertareditararticulo, canActivate: [seguridadGuard] },
+      { path: 'busquedas', component: Buscar } // ✅ Pública
+    ]
+  },
+
+  // === USUARIOS ===
+  {
+    path: 'usuarios',
+    component: Usuario,
+    children: [
+      { path: 'nuevo', component: Insertareditarusuario },
+      { path: 'ediciones/:id', component: Insertareditarusuario },
+      { path: 'listarsinpassword', component: Listausariossinpassword }
+    ],
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+  },
+
+  // === ROLES (solo DESARROLLADOR) ===
+  {
+    path: 'roles',
+    component: Rol,
+    children: [
+      { path: 'nuevo', component: Insertareditarrol},
+      { path: 'ediciones/:id', component: Insertareditarrol}
+    ],
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+  },
+
+  // === USUARIO PREMIO ===
+  {
+    path: 'usuariopremios',
+    component: Usuariopremio,
+     canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+    children: [
+      { path: 'nuevo', component: Insertareditarusuariopremio,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] }
+         },
+      { path: 'ediciones/:id', component: Insertareditarusuariopremio,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] }
+       },
+    ]
+  },
+
+  // === COMENTARIO ARTÍCULO ===
+  {
+    path: 'comentarioarticulos',
+    component: Comentarioarticulo,
+    canActivate: [seguridadGuard],
+    children: [
+      { path: 'nuevo', component: Insertareditarcomentarioarticulo },
+      { path: 'ediciones/:id', component: Insertareditarcomentarioarticulo }
+    ]
+  },
+
+  // === FORMATO ARCHIVO ===
+  {
+    path: 'formatoarchivos',
+    component: Formatoarchivo,
+     canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+    children: [
+      { path: 'nuevo', component: Insertareditar ,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+      },
+      { path: 'ediciones/:id', component: Insertareditar,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       }
+    ]
+  },
+
+  // === ASESORÍA ===
+  {
+    path: 'asesorias',
+    component: Asesoria,
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+    children: [
+      { path: 'nuevo', component: Insertareditarasesoria,
         canActivate: [seguridadGuard],
-    }
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       },
+      { path: 'ediciones/:id', component: Insertareditarasesoria,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       },
+      { path: 'chat/:id/:nombreAsesoria', component: ChatAsesoria,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+       }
+    ]
+  },
+
+  // === VALORACIÓN ===
+  {
+    path: 'valoraciones',
+    component: Valoracion,
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+    children: [
+      { path: 'nuevo', component: Insertareditarvaloracion,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+       },
+      { path: 'ediciones/:id', component: Insertareditarvaloracion,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+      }
+    ]
+  },
+
+  // === MENSAJES ===
+  {
+    path: 'mensajes',
+    component: Mensaje,
+     canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+    children: [
+      { path: 'nuevo', component: Insertareditarmensaje,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+       },
+      { path: 'ediciones/:id', component: Insertareditarmensaje,
+         canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       }
+    ]
+  },
+
+  // === NOTIFICACIONES ===
+  {
+    path: 'notificaciones',
+    component: Notificacion,
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+    children: [
+      { path: 'nuevo', component: Insertareditarnotificacion,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       },
+      { path: 'ediciones/:id', component: Insertareditarnotificacion,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       }
+    ]
+  },
+
+  // === REPORTES ===
+  { path: 'reports', component: Reportes, canActivate: [seguridadGuard] },
+
+  // === DISPONIBILIDAD ===
+  {
+    path: 'disponibilidades',
+    component: Disponibilidad,
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+    children: [
+      { path: 'nuevo', component: Insertareditardisponibilidad,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR'] },
+      },
+      { path: 'ediciones/:id', component: Insertareditardisponibilidad,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR'] },
+       }
+    ]
+  },
+
+  // === ARCHIVOS ===
+  {
+    path: 'archivos',
+    component: Archivo,
+    canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+    children: [
+      { path: 'nuevo', component: Insertareditararchivo,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       },
+      { path: 'ediciones/:id', component: Insertareditararchivo,
+        canActivate: [seguridadGuard],
+    data: { roles: ['DESARROLLADOR','ADMIN'] },
+       }
+    ]
+  }
 ];

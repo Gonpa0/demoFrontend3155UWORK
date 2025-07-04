@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-menu',
@@ -18,15 +19,33 @@ import { RouterLink } from '@angular/router';
   styleUrl: './menu.css'
 })
 export class Menu {
-  // Simulación temporal  sin AuthService)
-  isLoggedIn: boolean = false;
+  isLoggedIn = signal(false);
+  rolUsuario = signal('');
+  rutaActual = signal('');
 
-  login() {
-    this.isLoggedIn = true;
+  constructor(private loginService: LoginService, private router: Router) {
+    this.loginService.loginStatus$.subscribe((estado) => this.isLoggedIn.set(estado));
+    this.loginService.userRol$.subscribe((rol) => this.rolUsuario.set(rol));
+
+    // Detectar la ruta actual
+    this.router.events.subscribe(() => {
+      this.rutaActual.set(this.router.url);
+    });
+  }
+
+  isLoggedInUsuario(): boolean {
+    return this.isLoggedIn();
+  }
+
+  rolUsuarioActual(): string {
+    return this.rolUsuario();
+  }
+
+  rutaEsHome(): boolean {
+    return this.rutaActual() === '/home';
   }
 
   logout() {
-    this.isLoggedIn = false;
-    // redirigir a home despues
+    this.loginService.logout();
   }
 }

@@ -39,7 +39,7 @@ export class Insertareditarvaloracion implements OnInit{
     edicion: boolean = false
     listaAsesorias: Asesoria[]=[]
     listaUsuarios: Usuario[]=[]
-    
+
 
     constructor(
       private formBuilder: FormBuilder,
@@ -66,7 +66,7 @@ export class Insertareditarvaloracion implements OnInit{
     })
     this.aS.list().subscribe(data=>{
       this.listaAsesorias = data
-    })      
+    })
   }
   aceptar(){
     if (this.form.valid) {
@@ -100,7 +100,6 @@ export class Insertareditarvaloracion implements OnInit{
           calificacion: data.calificacion,
           asesoria: data.asesoria.idAsesoria,
           usuario: data.usuario.idUsuario
-          
         })
       })
     }

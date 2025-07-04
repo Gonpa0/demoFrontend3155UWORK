@@ -35,4 +35,7 @@ export class AsesoriaService {
     deleteA(id:number) {
       return this.http.delete(`${this.url}/${id}`);
     }
+    listarPorUsuario(idUsuario: number) {
+    return this.http.get<Asesoria[]>(`${this.url}/usuario/${idUsuario}`);
+    }
 }
