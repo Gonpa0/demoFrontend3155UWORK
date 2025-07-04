@@ -6,6 +6,8 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Disponibilidad } from '../../../models/Disponibilidad';
 import { DisponibilidadService } from '../../../services/disponibilidad.service';
+import { LoginService } from '../../../services/login.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-listardisponibilidad',
@@ -14,17 +16,28 @@ import { DisponibilidadService } from '../../../services/disponibilidad.service'
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
-    RouterLink
+    RouterLink,
+    CommonModule
   ],
   templateUrl: './listardisponibilidad.html',
   styleUrl: './listardisponibilidad.css'
 })
 export class Listardisponibilidad {
-   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7'];
+
+  allColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5','c6','c7'];
+  publicColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5'];
+  displayedColumns: string[] = this.publicColumns;
+
+
+
   dataSource:MatTableDataSource<Disponibilidad>=new MatTableDataSource()
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private disponibilidadS:DisponibilidadService){
+    isLoggedIn: boolean = false;
+    rolUsuario: string = '';
+
+
+  constructor(private disponibilidadS:DisponibilidadService, private loginService:LoginService){
   }
 
   ngOnInit(): void {
@@ -38,7 +51,29 @@ export class Listardisponibilidad {
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
       })
+
+       // Escuchar estado de sesión
+    this.loginService.loginStatus$.subscribe(status => {
+      this.isLoggedIn = status;
+      this.verificarAcceso();
+    });
+
+    // Escuchar rol de usuario
+    this.loginService.userRol$.subscribe(rol => {
+      this.rolUsuario = rol;
+      this.verificarAcceso();
+    });
+
   } /*this.dataSource= new MatTableDataSource(data) <= No funciona para actualizar automaticamente cuando hago new MatTableDataSource(data)*/
+
+  verificarAcceso() {
+    if (this.isLoggedIn && (this.rolUsuario === 'ADMIN' || this.rolUsuario === 'DESARROLLADOR' || this.rolUsuario === 'ESTUDIANTESUPERIOR')) {
+      this.displayedColumns = this.allColumns;
+    } else {
+      this.displayedColumns = this.publicColumns;
+    }
+  }
+
 
   eliminar(id:number){
     this.disponibilidadS.deleteDisponibilidad(id).subscribe(data=>{
