@@ -268,6 +268,7 @@ export const routes: Routes = [
   {
   path: 'miperfil',
   component: MiPerfil,
-  canActivate: [seguridadGuard]
+  canActivate: [seguridadGuard],
+  data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
 }
 ];

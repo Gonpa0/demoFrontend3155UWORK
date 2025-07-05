@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { RouterLink } from '@angular/router';
 import { UsernameSinPasswordDTO } from '../../../models/UsernameSinPasswordDTO';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { UsernamesinpassworddtoService } from '../../../services/usernamesinpassworddto.service';
@@ -20,14 +19,14 @@ export class Listausariossinpassword implements OnInit{
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private udtoS:UsernamesinpassworddtoService){}
-  
+
   ngOnInit(): void {
     this.udtoS.list().subscribe(data=>{
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;
       })
-      
-      
+
+
       this.udtoS.getList().subscribe(data=>{
         this.dataSource.data = data
         this.dataSource.paginator = this.paginator;

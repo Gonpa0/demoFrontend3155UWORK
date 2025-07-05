@@ -23,8 +23,9 @@ export class MiPerfil implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.loginService.getIdUsuario();
 
+    const id = this.loginService.getIdUsuario();
+    console.log(id);
     if (id) {
       this.obtenerDatos(id);
     } else {
