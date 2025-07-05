@@ -3,7 +3,6 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { Mensaje } from '../models/Mensaje';
 import { HttpClient } from '@angular/common/http';
-import { BusquedaPalabraMensajesDTO } from '../models/BusquedaPalabraMensajesDTO';
 
 const base_url = environment.base;
 
@@ -41,10 +40,7 @@ export class MensajeService {
     deleteM(id:number) {
       return this.http.delete(`${this.url}/${id}`);
     }
-    // BUSCA TODOS LOS MENSAJES Y FILTRA EN EL FRONTEND
-buscarTodosParaFiltrar() {
-  return this.http.get<BusquedaPalabraMensajesDTO[]>(`${this.url}/BusquedaPalabraMensajes`);
-}
+
 
 
 }
