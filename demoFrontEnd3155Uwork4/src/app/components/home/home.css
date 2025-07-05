@@ -1,8 +1,8 @@
-/* Opcional: fondo claro para todo el componente */
 :host {
   display: block;
-  background-color: #f5f5f5;
+  background-color: #fef9f4; /* beige claro cálido */
   padding-bottom: 40px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
 }
 
 /* ===== Hero / sección principal ===== */
@@ -10,28 +10,27 @@
   margin: 40px auto;
   padding: 24px;
   max-width: 900px;
-  border-radius: 12px;
-  /* Gradiente agradable */
-  background: linear-gradient(135deg, #445aec, #020202);
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0a1371, #7a0f0f); /* azul marino + rojo ladrillo */
   color: white;
-  /* Sombra para destacar */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-/* Títulos del Hero */
 .hero-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 16px;
+  opacity: 0.95;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
 /* Texto descriptivo */
@@ -39,75 +38,71 @@
   margin: 20px 0;
   font-size: 1.1rem;
   line-height: 1.6;
+  color: #fefefe;
 }
-
-
 
 /* Botón de Iniciar Sesión */
 .login-btn {
-  background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+  background: linear-gradient(135deg, #0a1371, #3949ab);
   color: white;
-  padding: 10px 28px;
+  padding: 12px 28px;
   font-weight: 600;
   border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(63, 81, 181, 0.4);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
+  margin-right: 10px;
 }
 
 .login-btn:hover {
-  background: linear-gradient(135deg, #303f9f, #3949ab);
-  box-shadow: 0 6px 14px rgba(63, 81, 181, 0.6);
+  background: linear-gradient(135deg, #050c4c, #1e3d8f);
   transform: translateY(-2px);
 }
 
 /* Botón de Registrarse */
 .register-btn {
-  border: 2px solid #3f51b5;
-  color: #3f51b5;
-  padding: 10px 28px;
+  border: 2px solid #7a0f0f;
+  color: #7a0f0f;
+  padding: 12px 28px;
   font-weight: 600;
   border-radius: 30px;
-  background-color: white;
+  background-color: #fff3ec;
   transition: all 0.3s ease;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
 }
 
 .register-btn:hover {
-  background-color: #e8eaf6;
-  border-color: #303f9f;
-  color: #303f9f;
+  background-color: #ffe8e0;
+  border-color: #5a0d0d;
+  color: #5a0d0d;
   transform: translateY(-2px);
 }
 
-/* ===== Secciones de contenido (info-card) ===== */
+/* ===== Secciones de contenido ===== */
 .info-card {
   margin: 24px auto;
   padding: 24px;
   max-width: 800px;
-  border-radius: 8px;
+  border-radius: 10px;
   background-color: white;
-  /* Sombra menos intensa que el hero */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Título de cada sección */
 .info-card mat-card-title {
-  font-size: 1.5rem;
-  color: #3f51b5; /* color primario Material */
-  font-weight: 600;
+  font-size: 1.7rem;
+  color: #0a1371;
+  font-weight: 700;
 }
 
-/* Párrafos dentro de info-card */
 .info-card p {
   margin: 12px 0;
   line-height: 1.6;
   color: #424242;
+  font-size: 1.05rem;
 }
 
-/* Enlaces en sección Contacto */
 .info-card a {
-  color: #3f51b5;
+  color: #0a1371;
   text-decoration: none;
   font-weight: 500;
 }
@@ -122,29 +117,29 @@
   display: flex;
   align-items: center;
   margin: 10px 0;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: #fefefe;
   transition: background 0.3s;
+  border-left: 4px solid #0a1371;
 }
 
-/* Fondo ligero en hover para mejorar interactividad */
 .feature:hover,
 .step:hover {
-  background-color: rgba(63, 81, 181, 0.05);
+  background-color: rgba(10, 19, 113, 0.06);
 }
 
-/* Iconos alineados con texto */
 .feature mat-icon,
 .step mat-icon {
   margin-right: 10px;
-  color: #3f51b5;
+  color: #0a1371;
 }
 
-/* Texto de la lista */
 .feature span,
 .step span {
   font-size: 1rem;
-  color: #333;
+  color: #222;
+  font-weight: 500;
 }
 
 /* ===== Responsividad básica ===== */
@@ -155,23 +150,19 @@
     padding: 16px;
   }
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   .hero-subtitle {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
-  .hero-text {
-    font-size: 1rem;
-  }
+  .hero-text,
   .feature span,
   .step span {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }
 
-/* ===== Opcional: pequeños decorativos ===== */
-/* Puedes añadir un pseudo-elemento sutil en el hero para un efecto de overlay */
-/* Descomenta si quieres un overlay semitransparente */
+/* ===== Decorativos (Overlay y capas) ===== */
 .hero-card::before {
   content: "";
   position: absolute;
@@ -179,18 +170,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* ligero overlay oscuro para mejorar contraste del texto */
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.25);
   pointer-events: none;
 }
 
-/* Si tu mat-card-header agrega un fondo blanco que rompe el gradiente,
-   puedes hacerlo traslúcido para mantener el gradiente visible */
 .hero-card mat-card-header {
   background: transparent;
 }
 
-/* Asegura que el contenido esté encima del overlay */
 .hero-card mat-card-content,
 .hero-card mat-card-title,
 .hero-card mat-card-subtitle {
@@ -198,17 +185,16 @@
   z-index: 1;
 }
 
+/* Footer con branding */
 .footer {
-  background-color: #0a1371; /* mismo azul que tu navbar */
+  background-color: #0a1371;
   color: white;
-  padding: 16px;
+  padding: 20px 16px;
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  margin-top: 40px;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-  border-top: 2px solid #3949ab; /* línea superior decorativa */
+  margin-top: 60px;
+  border-top: 4px solid #7a0f0f;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
+
