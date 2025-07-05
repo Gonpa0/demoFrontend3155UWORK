@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { Subject } from 'rxjs';
 import { Articulo } from '../models/Articulo';
 import { HttpClient } from '@angular/common/http';
+import { BuscarPorAutorDTO } from '../models/BuscarPorAutorDTO';
 
 
 const base_url = environment.base
@@ -52,4 +53,11 @@ export class ArticuloService {
      const params={ keyword }
     return this.h.get<Articulo[]>(`${this.url}/buscar`,{params})
   }
+
+  buscarporautor(nombreAutor:string){
+    //IMPORTANTE PASAR EL NOMBRE TAL CUAL DEL PARAMETRO QUE ESTA EN EL BACKEND
+     const params={nombreAutor }
+    return this.h.get<BuscarPorAutorDTO[]>(`${this.url}/articulo_autor`,{params})
+  }
+
 }

@@ -46,12 +46,12 @@ export class AsesoriaPorFechaComponent implements OnInit {
     });
 
     // Escuchar cambios de fecha
-    this.form.get('fecha')?.valueChanges.subscribe(value => {
+    /*this.form.get('fecha')?.valueChanges.subscribe(value => {
       this.buscarPorFecha(value);
-    });
+    });*/
   }
 
-  buscarPorFecha(fecha: Date): void {
+  /*buscarPorFecha(fecha: Date): void {
     if (fecha) {
       const fechaISO = fecha.toISOString().split('T')[0]; // yyyy-MM-dd
       this.asesoriaService.searchByFecha(fechaISO).subscribe(data => {
@@ -65,5 +65,5 @@ export class AsesoriaPorFechaComponent implements OnInit {
         this.noResults = false;
       });
     }
-  }
+  }*/
 }
