@@ -1,13 +1,13 @@
 <div class="container">
   <div style="text-align: center; margin:5%">
-    <h1>Registro de Disponibilidades</h1>
+    <h1>📅 Registro de Disponibilidades</h1>
   </div>
 
   <div style="text-align: center; margin:5%">
     <form [formGroup]="form" (submit)="aceptar()">
 
       <mat-form-field *ngIf="edicion">
-        <mat-label>ID</mat-label>
+        <mat-label>🆔 ID</mat-label>
         <input matInput formControlName="codigo" />
         <mat-error *ngIf="form.get('codigo')?.hasError('required')">
           El código es obligatorio !!
@@ -17,7 +17,7 @@
       <br><br>
 
       <mat-form-field>
-        <mat-label>Escoge la fecha</mat-label>
+        <mat-label>📅 Escoge la fecha</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="fecha">
         <mat-hint>Mes/Día/Año</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -29,9 +29,8 @@
 
       <br><br>
 
-      <!-- COMPONENTES PARA HORA INICIO Y HORA FIN -->
       <mat-form-field>
-        <mat-label>Hora de Inicio</mat-label>
+        <mat-label>⏰ Hora de Inicio</mat-label>
         <input matInput type="time" formControlName="horaInicio">
         <mat-error *ngIf="form.get('horaInicio')?.hasError('required')">
           La hora de inicio es obligatoria!!
@@ -41,7 +40,7 @@
       <br><br>
 
       <mat-form-field>
-        <mat-label>Hora de Fin</mat-label>
+        <mat-label>⏳ Hora de Fin</mat-label>
         <input matInput type="time" formControlName="horaFin">
         <mat-error *ngIf="form.get('horaFin')?.hasError('required')">
           La hora de fin es obligatoria!!
@@ -51,7 +50,7 @@
       <br><br>
 
       <mat-form-field>
-        <mat-label>Estudiantes</mat-label>
+        <mat-label>👤 Estudiantes</mat-label>
         <mat-select formControlName="nombreusuario">
           @for (food of listaUsuarios; track food) {
             <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
@@ -64,7 +63,7 @@
 
       <br><br>
 
-      <button matButton="filled">Registrar</button>
+      <button matButton="filled">📥 Registrar</button>
     </form>
   </div>
 </div>
