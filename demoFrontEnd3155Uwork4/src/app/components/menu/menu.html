@@ -92,8 +92,10 @@
 
   <!-- BOToN mi cuenta -->
    <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
-    <button mat-raised-button color="warn" class="logout-button" routerLink="/inicio">Mi cuenta</button>
-  </div>
+  <button mat-raised-button color="warn" class="logout-button" routerLink="/miperfil">
+    Mi cuenta
+  </button>
+</div>
 <!-- BOToN DE cerrar sesion -->
   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-raised-button color="warn" class="logout-button" routerLink="/home" (click)="logout()">Cerrar Sesión</button>
@@ -190,7 +192,7 @@
 </mat-menu>
 
 <mat-menu #menuUsuario="matMenu">
-  <button mat-menu-item routerLink="/usuarios">Listar</button>
+  <button mat-menu-item routerLink="/usuarios/listarsinpassword">Listar</button>
   <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
 </mat-menu>
 

@@ -35,6 +35,9 @@ import { Listausariossinpassword } from './components/usuario/listausariossinpas
 import { seguridadGuard } from './guard/seguridad.guard';
 import { Login } from './components/login/login';
 import { Chat } from './components/chat/chat';
+import { BuscarporautorComponent } from './components/articulo/buscarporautor/buscarporautor';
+import { BuscarPorAutorDTO } from './models/BuscarPorAutorDTO';
+import { MiPerfil } from './components/mi-perfil/mi-perfil';
 
 
 export const routes: Routes = [
@@ -68,7 +71,8 @@ export const routes: Routes = [
     children: [
       { path: 'nuevo', component: Insertareditararticulo, canActivate: [seguridadGuard] },
       { path: 'ediciones/:id', component: Insertareditararticulo, canActivate: [seguridadGuard] },
-      { path: 'busquedas', component: Buscar } // ✅ Pública
+      { path: 'busquedas', component: Buscar }, // ✅ Pública
+      { path: 'articuloporautor', component: BuscarporautorComponent, canActivate: [seguridadGuard] } // Pública
     ]
   },
 
@@ -257,5 +261,14 @@ export const routes: Routes = [
     data: { roles: ['DESARROLLADOR','ADMIN'] },
        }
     ]
-  }
+  },
+
+  // MI PERFIL
+
+  {
+  path: 'miperfil',
+  component: MiPerfil,
+  canActivate: [seguridadGuard],
+  data: { roles: ['DESARROLLADOR','ADMIN','ESTUDIANTESUPERIOR','ESTUDIANTEINFERIOR'] },
+}
 ];
