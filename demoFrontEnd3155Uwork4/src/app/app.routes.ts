@@ -37,6 +37,7 @@ import { Login } from './components/login/login';
 import { Chat } from './components/chat/chat';
 import { BuscarporautorComponent } from './components/articulo/buscarporautor/buscarporautor';
 import { BuscarPorAutorDTO } from './models/BuscarPorAutorDTO';
+import { MiPerfil } from './components/mi-perfil/mi-perfil';
 
 
 export const routes: Routes = [
@@ -260,5 +261,13 @@ export const routes: Routes = [
     data: { roles: ['DESARROLLADOR','ADMIN'] },
        }
     ]
-  }
+  },
+
+  // MI PERFIL
+
+  {
+  path: 'miperfil',
+  component: MiPerfil,
+  canActivate: [seguridadGuard]
+}
 ];

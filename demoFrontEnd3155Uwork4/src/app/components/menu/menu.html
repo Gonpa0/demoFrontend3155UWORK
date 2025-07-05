@@ -92,8 +92,10 @@
 
   <!-- BOToN mi cuenta -->
    <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
-    <button mat-raised-button color="warn" class="logout-button" routerLink="/inicio">Mi cuenta</button>
-  </div>
+  <button mat-raised-button color="warn" class="logout-button" routerLink="/miperfil">
+    Mi cuenta
+  </button>
+</div>
 <!-- BOToN DE cerrar sesion -->
   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-raised-button color="warn" class="logout-button" routerLink="/home" (click)="logout()">Cerrar Sesión</button>
