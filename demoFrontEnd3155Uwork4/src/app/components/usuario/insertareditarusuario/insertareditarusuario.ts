@@ -103,7 +103,7 @@ export class Insertareditarusuario implements OnInit{
         });
           })
       }
-      this.router.navigate(['usuarios'])
+      this.router.navigate(['usuarios/listarsinpassword'])
     }
   }
   init(){
