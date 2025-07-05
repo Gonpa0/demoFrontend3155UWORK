@@ -46,7 +46,7 @@ export const routes: Routes = [
   { path: 'nosotros', component: Nosotros }, //publico no necesitas ni estar logueado ni tener algun rol para ingresar
   { path: 'login', component: Login }, //publico
   { path: 'inicio', component: Inicio, canActivate: [seguridadGuard] }, //sin rol pero necesitas loguearte
-  { path: 'chatIA', component: Chat, canActivate: [seguridadGuard] }, //sin rol pero necesitas loguearte
+  { path: 'chatIA', component: Chat }, //sin rol pero necesitas loguearte
 
   // === PREMIOS ===
   {
