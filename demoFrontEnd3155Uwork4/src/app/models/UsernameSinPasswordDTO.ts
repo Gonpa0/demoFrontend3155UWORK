@@ -8,5 +8,5 @@ export class UsernameSinPasswordDTO {
     carrera: string = '';
     centro_de_estudios: string = '';
     rol: Rol = new Rol();
-    estado: boolean = false;
+    estado: boolean = false; 
 }

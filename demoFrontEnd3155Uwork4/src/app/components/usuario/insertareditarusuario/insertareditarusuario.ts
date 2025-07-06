@@ -13,6 +13,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { Rol } from '../../../models/Rol';
 import { RolService } from '../../../services/rol.service';
 import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-insertareditarusuario',
@@ -24,7 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatSelectModule,
     MatButtonModule,
-    MatFormFieldModule],
+    MatFormFieldModule,
+    ],
   templateUrl: './insertareditarusuario.html',
   providers:[provideNativeDateAdapter()],
   styleUrl: './insertareditarusuario.css'
@@ -36,13 +38,15 @@ export class Insertareditarusuario implements OnInit{
   id:number=0
   edicion: boolean = false
   listaRoles: Rol[]=[]
+  listaCiclos: number[] = Array.from({length: 10}, (_, i) => i + 1);
 
   constructor(
     private formBuilder: FormBuilder,
     private uS:UsuarioService,
     private route:ActivatedRoute,
     private router: Router,
-    private rS:RolService
+    private rS:RolService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -52,16 +56,16 @@ export class Insertareditarusuario implements OnInit{
       this.init()
     })
       this.form = this.formBuilder.group({
-      codigo: [0],
-      username: ['', Validators.required],
-      correo: ['', Validators.required],
-      password: ['', Validators.required],
-      ciclo: ['', Validators.required],
-      puntos: ['', Validators.required],
-      carrera: ['', Validators.required],
-      centro_de_estudios: ['', Validators.required],
+      codigo: [0], 
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+      correo: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
+      ciclo: ['', [Validators.required, Validators.min(1), Validators.max(10)]],
+      puntos: [0, [Validators.required, Validators.min(0)]],
+      carrera: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+      centro_de_estudios: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
       rol: ['', Validators.required],
-      estado: ['', Validators.required]
+      estado: [true, Validators.required]
     })
     this.rS.list().subscribe(data=>{
       this.listaRoles = data
@@ -84,6 +88,9 @@ export class Insertareditarusuario implements OnInit{
           this.uS.list().subscribe(data=>{
             this.uS.setList(data)
           })
+          this.snackBar.open('Se actualizo correctamente', 'Cerrar', {
+          duration: 2500
+        });
         })
       }
       else{
@@ -91,29 +98,14 @@ export class Insertareditarusuario implements OnInit{
             this.uS.list().subscribe(data=>{
               this.uS.setList(data)
             })
+            this.snackBar.open('Registro exitoso', 'Cerrar', {
+            duration: 2500
+        });
           })
       }
-      this.router.navigate(['usuarios'])
+      this.router.navigate(['usuarios/listarsinpassword'])
     }
   }
-  /*init(){
-    if (this.edicion) {
-      this.uS.listId(this.id).subscribe(data=>{
-        this.form = new FormGroup({
-          codigo: new FormControl(data.idUsuario),
-          username:new FormControl (data.username),
-          correo: new FormControl (data.correo),
-          password: new FormControl(data.password),
-          ciclo: new FormControl (data.ciclo),
-          puntos:new FormControl (data.puntos),
-          carrera: new FormControl (data.carrera),
-          centro_de_estudios: new FormControl (data.centro_de_estudios),
-          rol: new FormControl (data.rol.idRol),
-          estado:new FormControl(data.estado)
-        })
-      })
-    }
-  }*/
   init(){
     if (this.edicion) {
       this.uS.listId(this.id).subscribe(data=>{
@@ -131,6 +123,9 @@ export class Insertareditarusuario implements OnInit{
         })
       })
     }
+  }
+  cancelar(): void {
+    this.router.navigate(['usuarios']);
   }
 
 }

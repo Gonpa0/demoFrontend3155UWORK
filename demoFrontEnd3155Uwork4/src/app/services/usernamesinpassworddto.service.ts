@@ -20,4 +20,7 @@ export class UsernamesinpassworddtoService {
   getList() {
         return this.listaCambio.asObservable();
       }
+   setList(listaNueva:UsernameSinPasswordDTO[]) {
+      this.listaCambio.next(listaNueva);
+    }
 }
