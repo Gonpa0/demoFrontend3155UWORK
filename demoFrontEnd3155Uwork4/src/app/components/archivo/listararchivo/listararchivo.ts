@@ -20,7 +20,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './listararchivo.css'
 })
 export class Listararchivo {
-   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7','c8'];
+  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4','c5','c6','c7','c8'];
   dataSource:MatTableDataSource<Archivo>=new MatTableDataSource()
     @ViewChild(MatPaginator) paginator!: MatPaginator;
 

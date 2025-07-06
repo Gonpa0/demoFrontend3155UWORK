@@ -1,5 +1,8 @@
-<mat-toolbar class="custom-toolbar">
 
+<mat-toolbar class="custom-toolbar">
+<div class="logo-contanier">
+    <img src="assets/logo.jpg" alt="logo UWORk">
+</div>
 <!-- MENÚ PÚBLICO: visible solo cuando NO ha iniciado sesión -->
 <div *ngIf="!isLoggedInUsuario()">
   <button mat-button routerLink="/home" class="btn-rojo">
@@ -26,14 +29,14 @@
    <!-- OPCIONES VISIBLES SOLO SI ESTÁ LOGUEADO -->
 <div *ngIf="isLoggedIn() && (rolUsuario() === 'DESARROLLADOR' || rolUsuario() === 'ADMIN' )">
   <button mat-button [matMenuTriggerFor]="menuUsuario" class="btn-rojo">
-    <mat-icon>supervisor_account</mat-icon>
+    <mat-icon>person</mat-icon>
     Usuario
   </button>
 </div>
 
   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-button [matMenuTriggerFor]="menuUsuariopremio" class="btn-rojo">
-      <mat-icon>supervisor_account</mat-icon>
+      <mat-icon>military_tech</mat-icon>
       Usuario-Premios
     </button>
   </div>
@@ -54,14 +57,14 @@
 
    <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-button [matMenuTriggerFor]="menuComentarioArticulo" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
+      <mat-icon> rate_review</mat-icon>
       Comentario Artículo
     </button>
   </div>
 
    <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-button [matMenuTriggerFor]="menuValoracion" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
+      <mat-icon>star</mat-icon>
       Valoracion
     </button>
   </div>
@@ -69,7 +72,7 @@
   <!-- BOTÓN ROL visible solo para usuarios con rol DESARROLLADOR -->
 <div *ngIf="isLoggedIn() && (rolUsuario() === 'DESARROLLADOR' || rolUsuario() === 'ADMIN' )">
   <button mat-button [matMenuTriggerFor]="menuRol" class="btn-rojo">
-    <mat-icon>admin_panel_settings</mat-icon>
+    <mat-icon>supervisor_account</mat-icon>
     Rol
   </button>
 </div>
@@ -81,7 +84,7 @@
   <button mat-stroked-button color="accent" routerLink="/login">
     <mat-icon>login</mat-icon> Iniciar Sesión
   </button>
-  <button mat-stroked-button color="accent" routerLink="/register">
+  <button mat-raised-button color="accent" type="button" (click)="registrar()">
     <mat-icon>person_add</mat-icon> Registrarse
   </button>
 </div>
@@ -106,35 +109,35 @@
 <mat-toolbar class="custom-toolbar" *ngIf="isLoggedInUsuario() && !rutaEsHome()">
   <div *ngIf="isLoggedIn">
     <button mat-button [matMenuTriggerFor]="menuNotificacion" class="btn-rojo">
-    <mat-icon>comment</mat-icon>
+    <mat-icon>notifications_active</mat-icon>
     Notificacion
   </button>
   </div>
 
   <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-button [matMenuTriggerFor]="menuAsesoria" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
+      <mat-icon>supervised_user_circle</mat-icon>
       Asesoria
     </button>
   </div>
 
   <div *ngIf="isLoggedIn() && (rolUsuario() === 'DESARROLLADOR' || rolUsuario() === 'ADMIN' )">
     <button mat-button [matMenuTriggerFor]="menuMensaje" class="btn-rojo">
-      <mat-icon>comment</mat-icon>
+      <mat-icon> chat</mat-icon>
       Mensaje
     </button>
   </div>
 
     <div *ngIf="isLoggedIn() && (rolUsuario() === 'DESARROLLADOR' || rolUsuario() === 'ADMIN' )">
     <button mat-button [matMenuTriggerFor]="menuformatoarchivos" class="btn-rojo">
-      <mat-icon>description</mat-icon>
+      <mat-icon> attach_file</mat-icon>
       Formato de Archivos
     </button>
   </div>
 
     <div *ngIf="isLoggedInUsuario() && !rutaEsHome()">
     <button mat-button [matMenuTriggerFor]="menuDisponibilidades" class="btn-rojo">
-      <mat-icon>description</mat-icon>
+      <mat-icon>event</mat-icon>
       Disponibilidades
     </button>
   </div>
@@ -150,7 +153,7 @@
 
   <div  *ngIf="isLoggedIn() && (rolUsuario() === 'DESARROLLADOR' || rolUsuario() === 'ADMIN' )">
   <button mat-button [matMenuTriggerFor]="menuReportes" class="btn-rojo">
-   <mat-icon>file_copy</mat-icon>
+   <mat-icon> insert_chart</mat-icon>
    Reportes
   </button>
  </div>
@@ -174,6 +177,7 @@
   <button mat-menu-item routerLink="/articulos">Listar</button>
   <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR'" routerLink="/articulos/nuevo">Registrar</button>
   <button mat-menu-item *ngIf="isLoggedIn" routerLink="/articulos/busquedas">Buscar por palabra clave</button>
+  <button mat-menu-item *ngIf="rolUsuarioActual() === 'ADMIN' || rolUsuarioActual() === 'DESARROLLADOR' || rolUsuarioActual() === 'ESTUDIANTESUPERIOR' || rolUsuarioActual() === 'ESTUDIANTEINFERIOR'" routerLink="/articulos/articuloporautor">Buscar por articulos por autor</button>
 </mat-menu>
 
 <mat-menu #menuformatoarchivos="matMenu">
@@ -192,7 +196,7 @@
 </mat-menu>
 
 <mat-menu #menuUsuario="matMenu">
-  <button mat-menu-item routerLink="/usuarios/listarsinpassword">Listar</button>
+  <button mat-menu-item routerLink="/usuarios">Listar</button>
   <button mat-menu-item routerLink="/usuarios/nuevo">Registrar</button>
 </mat-menu>
 

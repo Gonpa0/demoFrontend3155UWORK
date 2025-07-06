@@ -1,6 +1,6 @@
 <div class="container" style="text-align: center">
-  <div>
-    <!-- <img src="assets/logo.png" alt="Logo de la empresa" > -->
+  <div class="img">
+    <img src="assets/logo.jpg" alt="Logo de la empresa">
   </div>
   <h2>🔐 Inicie sesión</h2>
 
@@ -22,6 +22,11 @@
   <br />
 
   <button mat-raised-button class="custom-button" (click)="login()">🚪 Ingresar</button>
+   <br>
+   <br>
+  <button mat-raised-button color="accent" type="button" (click)="cancelar()">
+        Cancelar
+    </button>
 
   <!-- Enlace al registro -->
   <p style="margin-top: 15px; font-size: 14px;">

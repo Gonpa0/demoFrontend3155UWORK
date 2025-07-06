@@ -38,3 +38,16 @@
   box-shadow: 0 6px 14px #3f51b5;
   transform: translateY(-2px);
 }
+
+.logo-contanier {
+  height: 40px; /* Ajusta esta altura según la altura de tu barra de navegación */
+  display: flex;
+  align-items: center;
+}
+
+/* Estilo para la imagen del logo */
+.logo-contanier img {
+  height: 100%;       /* La imagen ocupa toda la altura del contenedor */
+  width: auto;        /* El ancho se ajusta para no deformar la imagen */
+  display: block;
+}

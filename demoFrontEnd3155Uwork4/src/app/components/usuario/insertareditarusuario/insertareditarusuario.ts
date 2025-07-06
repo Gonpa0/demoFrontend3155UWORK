@@ -14,6 +14,7 @@ import { Rol } from '../../../models/Rol';
 import { RolService } from '../../../services/rol.service';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from '../../../services/login.service';
 
 @Component({
   selector: 'app-insertareditarusuario',
@@ -46,7 +47,8 @@ export class Insertareditarusuario implements OnInit{
     private route:ActivatedRoute,
     private router: Router,
     private rS:RolService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -125,7 +127,11 @@ export class Insertareditarusuario implements OnInit{
     }
   }
   cancelar(): void {
-    this.router.navigate(['usuarios']);
+    if (this.loginService.verificar()) {
+      this.router.navigate(['/usuarios']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
 }
