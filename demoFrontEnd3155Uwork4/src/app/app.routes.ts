@@ -36,7 +36,6 @@ import { seguridadGuard } from './guard/seguridad.guard';
 import { Login } from './components/login/login';
 import { Chat } from './components/chat/chat';
 import { BuscarporautorComponent } from './components/articulo/buscarporautor/buscarporautor';
-import { BuscarPorAutorDTO } from './models/BuscarPorAutorDTO';
 import { MiPerfil } from './components/mi-perfil/mi-perfil';
 
 
@@ -85,8 +84,8 @@ export const routes: Routes = [
       { path: 'ediciones/:id', component: Insertareditarusuario },
       { path: 'listarsinpassword', component: Listausariossinpassword }
     ],
-    canActivate: [seguridadGuard],
-    data: { roles: ['DESARROLLADOR','ADMIN'] },
+    //canActivate: [seguridadGuard],
+    //data: { roles: ['DESARROLLADOR','ADMIN'] },
   },
 
   // === ROLES (solo DESARROLLADOR) ===
