@@ -3,7 +3,7 @@
     <!-- <img src="assets/logo.png" alt="Logo de la empresa" > -->
   </div>
   <h2>🔐 Inicie sesión</h2>
-  
+
   <mat-form-field class="example-full-width">
     <mat-label>👤 Usuario</mat-label>
     <input matInput placeholder="Username" [(ngModel)]="username" />
@@ -22,4 +22,10 @@
   <br />
 
   <button mat-raised-button class="custom-button" (click)="login()">🚪 Ingresar</button>
+
+  <!-- Enlace al registro -->
+  <p style="margin-top: 15px; font-size: 14px;">
+    ¿No tienes una cuenta? 
+    <a href="/usuarios/nuevo" style="text-decoration: none; color: #3f51b5;">Haz click aquí</a>
+  </p>
 </div>
