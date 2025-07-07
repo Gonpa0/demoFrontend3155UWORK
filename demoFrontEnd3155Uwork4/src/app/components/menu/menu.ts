@@ -48,4 +48,7 @@ export class Menu {
   logout() {
     this.loginService.logout();
   }
+  registrar(): void {
+    this.router.navigate(['usuarios/nuevo']);
+  }
 }
